@@ -3,82 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ahmed Neji | Technical Portfolio</title>
+<title>Ahmed Neji | Portfolio</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
     font-family: "Segoe UI", Arial, sans-serif;
 }
 
-body {
-    background-color: #0d0d0d;
-    color: #e6e6e6;
+body{
+    background:#0d0d0d;
+    color:#e6e6e6;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    border-bottom: 1px solid #1a1a1a;
+nav{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    padding:20px 40px;
+    border-bottom:1px solid #1a1a1a;
 }
 
-.nav-left button,
-.nav-right button {
-    background: none;
-    border: none;
-    color: #e6e6e6;
-    margin-right: 20px;
-    font-size: 1rem;
-    cursor: pointer;
+button{
+    background:none;
+    border:none;
+    color:#e6e6e6;
+    margin-right:20px;
+    font-size:1rem;
+    cursor:pointer;
 }
 
-.nav-left button:hover,
-.nav-right button:hover {
-    color: #888;
+button:hover{
+    color:#888;
 }
 
-section {
-    max-width: 900px;
-    margin: 80px auto;
-    padding: 0 20px;
-    display: none;
+section{
+    max-width:900px;
+    margin:80px auto;
+    padding:0 20px;
+    display:none;
 }
 
-section.active {
-    display: block;
+section.active{
+    display:block;
 }
 
-h1 {
-    font-weight: 400;
-    margin-bottom: 30px;
+h1{
+    font-weight:400;
+    margin-bottom:25px;
 }
 
-.project {
-    margin-bottom: 50px;
+.project{
+    margin-bottom:60px;
 }
 
-.project img {
-    width: 100%;
-    margin-top: 20px;
-    border-radius: 8px;
-    opacity: 0.9;
+.project img{
+    width:100%;
+    border-radius:8px;
+    margin-top:20px;
 }
 
-.project img:hover {
-    opacity: 1;
-    transition: 0.3s;
+.contact-box{
+    line-height:2;
 }
 
-footer {
-    text-align: center;
-    padding: 40px;
-    border-top: 1px solid #1a1a1a;
-    color: #666;
-    margin-top: 80px;
+footer{
+    text-align:center;
+    padding:40px;
+    border-top:1px solid #1a1a1a;
+    color:#666;
 }
 </style>
 </head>
@@ -86,63 +81,132 @@ footer {
 <body>
 
 <nav>
-    <div class="nav-left">
-        <button onclick="showSection('overview')">Overview</button>
-        <button onclick="showSection('career')">Career</button>
-        <button onclick="showSection('projects')">Projects</button>
-    </div>
+<div>
+<button onclick="show('overview')">Overview</button>
+<button onclick="show('career')">Career</button>
+<button onclick="show('projects')">Projects</button>
+<button onclick="show('volunteer')">Volunteer</button>
+<button onclick="show('contact')">Contact</button>
+</div>
 
-    <div class="nav-right">
-        <button onclick="setLanguage('en')">EN</button>
-        <button onclick="setLanguage('de')">DE</button>
-    </div>
+<div>
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('de')">DE</button>
+</div>
 </nav>
 
+<!-- OVERVIEW -->
 <section id="overview" class="active">
-    <h1 data-en="Overview" data-de="Übersicht">Overview</h1>
-    <p data-en="Technical portfolio focused on mechanical and industrial systems."
-       data-de="Technisches Portfolio mit Fokus auf mechanische und industrielle Systeme.">
-       Technical portfolio focused on mechanical and industrial systems.
-    </p>
+<h1 data-en="Overview" data-de="Übersicht">Overview</h1>
+
+<p data-en="Technical portfolio focused on engineering, embedded systems, and customer-facing technical roles."
+data-de="Technisches Portfolio mit Fokus auf Engineering, Embedded-Systeme und technische Kundenkommunikation.">
+Technical portfolio focused on engineering, embedded systems, and customer-facing roles.
+</p>
 </section>
 
+<!-- CAREER -->
 <section id="career">
-    <h1 data-en="Career" data-de="Werdegang">Career</h1>
-    <p data-en="Information about professional development and technical growth."
-       data-de="Informationen über berufliche Entwicklung und technisches Wachstum.">
-       Information about professional development and technical growth.
-    </p>
+<h1 data-en="Career & Education" data-de="Karriere & Ausbildung">Career & Education</h1>
+
+<p>
+<b>INSAT — Engineering Student</b><br>
+Baccalaureate Mathematics — 18.11/20<br>
+SAT: 1480 | telc B1 German
+</p>
+
+<br>
+
+<p>
+<b>Assist Digital — Customer Service Representative</b><br>
+Booking.com Support<br>
+Handled customer inquiries via phone, email, and chat.<br>
+Maintained 95%+ customer satisfaction KPIs.
+</p>
+
+<br>
+
+<p>
+<b>Tunis Neon — Production Supervisor (Part-Time)</b><br>
+Laser cutting production supervision<br>
+Technical design with CorelDRAW<br>
+Safety and workflow optimization.
+</p>
 </section>
 
+<!-- PROJECTS -->
 <section id="projects">
-    <h1 data-en="Projects" data-de="Projekte">Projects</h1>
+<h1 data-en="Projects" data-de="Projekte">Projects</h1>
 
-    <div class="project">
-        <h3 data-en="Project Title" data-de="Projekttitel">Project Title</h3>
-        <p data-en="Description of technical implementation and applied principles."
-           data-de="Beschreibung der technischen Umsetzung und angewandter Prinzipien.">
-           Description of technical implementation and applied principles.
-        </p>
-        <img src="project1.jpg" alt="Project image">
-    </div>
+<div class="project">
+<h3>NXP Autonomous Race Robot</h3>
+<p>Embedded C/C++ | OpenCV | Pixy Camera | Motor control</p>
+<img src="project1.jpg" alt="Project">
+</div>
+
+<div class="project">
+<h3>Hexapod Robot</h3>
+<p>18 servo mechanical walking robot | Arduino control | Custom gait algorithms</p>
+<img src="project2.jpg" alt="Project">
+</div>
+
+<div class="project">
+<h3>Omega Bot (Description coming)</h3>
+<p>AI / Automation prototype project</p>
+<img src="project3.jpg" alt="Project">
+</div>
+
+</section>
+
+<!-- VOLUNTEER -->
+<section id="volunteer">
+<h1 data-en="Volunteer Work" data-de="Ehrenamtliches Engagement">Volunteer Work</h1>
+
+<p>
+<b>IEEE Women in Engineering — General Secretary</b><br>
+Organization of events (Pink October, outreach programs).<br>
+Fundraising and community support initiatives.
+</p>
+
+<br>
+
+<p>
+Distribution of school supplies, food, and clothing to families in need.<br>
+Annual charity drives during Ramadan and outreach campaigns.
+</p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<h1 data-en="Contact" data-de="Kontakt">Contact</h1>
+
+<div class="contact-box">
+Ahmed Neji<br>
+📞 28 413 650<br>
+📧 ahmedneji1@outlook.com<br>
+🌍 Tunisia<br>
+</div>
+
 </section>
 
 <footer>
-    © 2026 Ahmed Neji
+© 2026 Ahmed Neji
 </footer>
 
 <script>
-function showSection(id) {
-    document.querySelectorAll("section").forEach(section => {
-        section.classList.remove("active");
-    });
-    document.getElementById(id).classList.add("active");
+let currentLang = "en";
+
+function show(id){
+document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+document.getElementById(id).classList.add("active");
 }
 
-function setLanguage(lang) {
-    document.querySelectorAll("[data-en]").forEach(element => {
-        element.textContent = element.getAttribute("data-" + lang);
-    });
+function setLang(lang){
+currentLang = lang;
+
+document.querySelectorAll("[data-en]").forEach(el=>{
+el.textContent = el.getAttribute("data-"+lang);
+});
 }
 </script>
 
