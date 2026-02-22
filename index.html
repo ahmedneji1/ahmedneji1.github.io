@@ -1,149 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ahmed Neji | Technical Portfolio</title>
-
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", Arial, sans-serif;
-}
-
-body {
-    background-color: #0d0d0d;
-    color: #e6e6e6;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    border-bottom: 1px solid #1a1a1a;
-}
-
-.nav-left button,
-.nav-right button {
-    background: none;
-    border: none;
-    color: #e6e6e6;
-    margin-right: 20px;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-.nav-left button:hover,
-.nav-right button:hover {
-    color: #888;
-}
-
-section {
-    max-width: 900px;
-    margin: 80px auto;
-    padding: 0 20px;
-    display: none;
-}
-
-section.active {
-    display: block;
-}
-
-h1 {
-    font-weight: 400;
-    margin-bottom: 30px;
-}
-
-.project {
-    margin-bottom: 50px;
-}
-
-.project img {
-    width: 100%;
-    margin-top: 20px;
-    border-radius: 8px;
-    opacity: 0.9;
-}
-
-.project img:hover {
-    opacity: 1;
-    transition: 0.3s;
-}
-
-footer {
-    text-align: center;
-    padding: 40px;
-    border-top: 1px solid #1a1a1a;
-    color: #666;
-    margin-top: 80px;
-}
-</style>
-</head>
-
-<body>
-
-<nav>
-    <div class="nav-left">
-        <button onclick="showSection('overview')">Overview</button>
-        <button onclick="showSection('career')">Career</button>
-        <button onclick="showSection('projects')">Projects</button>
-    </div>
-
-    <div class="nav-right">
-        <button onclick="setLanguage('en')">EN</button>
-        <button onclick="setLanguage('de')">DE</button>
-    </div>
-</nav>
-
-<section id="overview" class="active">
-    <h1 data-en="Overview" data-de="Übersicht">Overview</h1>
-    <p data-en="Technical portfolio focused on mechanical and industrial systems."
-       data-de="Technisches Portfolio mit Fokus auf mechanische und industrielle Systeme.">
-       Technical portfolio focused on mechanical and industrial systems.
-    </p>
-</section>
-
-<section id="career">
-    <h1 data-en="Career" data-de="Werdegang">Career</h1>
-    <p data-en="Information about professional development and technical growth."
-       data-de="Informationen über berufliche Entwicklung und technisches Wachstum.">
-       Information about professional development and technical growth.
-    </p>
-</section>
-
-<section id="projects">
-    <h1 data-en="Projects" data-de="Projekte">Projects</h1>
-
-    <div class="project">
-        <h3 data-en="Project Title" data-de="Projekttitel">Project Title</h3>
-        <p data-en="Description of technical implementation and applied principles."
-           data-de="Beschreibung der technischen Umsetzung und angewandter Prinzipien.">
-           Description of technical implementation and applied principles.
-        </p>
-        <img src="project1.jpg" alt="Project image">
-    </div>
-</section>
-
-<footer>
-    © 2026 Ahmed Neji
-</footer>
-
-<script>
-function showSection(id) {
-    document.querySelectorAll("section").forEach(section => {
-        section.classList.remove("active");
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Ahmed Neji | Technical Portfolio</title><meta name="description" content="Ahmed Neji technical resume and portfolio"><link rel="icon" href="favicon.ico"><style>* {    margin: 0;    padding: 0;    box-sizing: border-box;    font-family: "Segoe UI", Arial, sans-serif;}body {    background-color: #0d0d0d;    color: #e6e6e6;}nav {    display: flex;    justify-content: space-between;    align-items: center;    padding: 20px 40px;    border-bottom: 1px solid #1a1a1a;}.nav-left button,.nav-right button {    background: none;    border: none;    color: #e6e6e6;    margin-right: 20px;    font-size: 1rem;    cursor: pointer;    outline: none;}.nav-left button.active,.nav-right button.active {    color: #00bfff;    font-weight: bold;    border-bottom: 2px solid #00bfff;}.nav-left button:focus,.nav-right button:focus {    outline: 2px solid #00bfff;}@media (max-width: 600px) {    nav {        flex-direction: column;        padding: 10px 10px;    }    .nav-left, .nav-right {        flex-direction: row;        margin-bottom: 10px;    }    section {        margin: 40px auto;        padding: 0 5px;    }}section {    max-width: 900px;    margin: 80px auto;    padding: 0 20px;    display: none;}section.active {    display: block;}h1 {    font-weight: 400;    margin-bottom: 30px;}.project {    margin-bottom: 50px;}.project img {    width: 100%;    margin-top: 20px;    border-radius: 8px;    opacity: 0.9;}.project img:hover {    opacity: 1;    transition: 0.3s;}footer {    text-align: center;    padding: 40px;    border-top: 1px solid #1a1a1a;    color: #666;    margin-top: 80px;}</style></head><body><nav>    <div class="nav-left">        <button onclick="showSection('overview')" id="nav-overview">Overview</button>        <button onclick="showSection('career')" id="nav-career">Career</button>        <button onclick="showSection('projects')" id="nav-projects">Projects</button>        <button onclick="showSection('contact')" id="nav-contact">Contact</button>    </div>    <div class="nav-right">        <button onclick="setLanguage('en')" id="lang-en">EN</button>        <button onclick="setLanguage('de')" id="lang-de">DE</button>    </div></nav><section id="overview" class="active">    <h1 data-en="Overview" data-de="Übersicht">Overview</h1>    <p data-en="Technical portfolio focused on mechanical and industrial systems."       data-de="Technisches Portfolio mit Fokus auf mechanische und industrielle Systeme.">       Technical portfolio focused on mechanical and industrial systems.    </p>    <h2 data-en="Profile" data-de="Profil">Profile</h2>    <p data-en="Adaptable and customer-focused professional with hands-on experience in both tech-driven and client-facing roles. A strong communicator and quick learner who thrives on solving problems and delivering excellent service. Actively seeking a summer opportunity to contribute, grow, and take on new challenges in a dynamic support environment."       data-de="Anpassungsfähiger und kundenorientierter Profi mit praktischer Erfahrung in technologiegetriebenen und kundenbezogenen Rollen. Starker Kommunikator und schneller Lerner, der gerne Probleme löst und exzellenten Service bietet. Auf der Suche nach einer Sommerchance, um beizutragen, zu wachsen und neue Herausforderungen in einem dynamischen Support-Umfeld anzunehmen.">       Adaptable and customer-focused professional with hands-on experience in both tech-driven and client-facing roles. A strong communicator and quick learner who thrives on solving problems and delivering excellent service. Actively seeking a summer opportunity to contribute, grow, and take on new challenges in a dynamic support environment.    </p>    <h2 data-en="Education" data-de="Ausbildung">Education</h2>    <ul>        <li data-en="National Institute of Applied Science and Technology (INSAT) – Tunisia: Engineering Student"            data-de="Nationales Institut für angewandte Wissenschaft und Technologie (INSAT) – Tunesien: Ingenieurstudent">            National Institute of Applied Science and Technology (INSAT) – Tunisia: Engineering Student        </li>        <li data-en="Baccalaureate, Mathematics Stream. Graduated: 2022 | Score: 18.11/20"            data-de="Abitur, Mathematik. Abschluss: 2022 | Note: 18.11/20">            Baccalaureate, Mathematics Stream. Graduated: 2022 | Score: 18.11/20        </li>        <li data-en="SAT Score: 1480" data-de="SAT Ergebnis: 1480">SAT Score: 1480</li>        <li data-en="Telc: B1 Certificate" data-de="Telc: B1 Zertifikat">Telc: B1 Certificate</li>        <li data-en="NXP Autonomous Vehicle Development Certification" data-de="NXP Zertifikat für autonome Fahrzeugentwicklung">NXP Autonomous Vehicle Development Certification</li>        <li data-en="STM32 Microcontroller Programming Certification" data-de="STM32 Mikrocontroller Programmierung Zertifikat">STM32 Microcontroller Programming Certification</li>    </ul></section><section id="career">    <h1 data-en="Career" data-de="Werdegang">Career</h1>    <h2 data-en="Experience" data-de="Erfahrung">Experience</h2>    <ul>        <li data-en="Customer Service Representative – Assist Digital (Booking.com), April 2023 – December 2023"            data-de="Kundenservice-Mitarbeiter – Assist Digital (Booking.com), April 2023 – Dezember 2023">            Customer Service Representative – Assist Digital (Booking.com), April 2023 – December 2023            <ul>                <li data-en="Handled customer inquiries, modifications, and complaints for hotel bookings via phone, email, and chat."                    data-de="Bearbeitung von Kundenanfragen, Änderungen und Beschwerden für Hotelbuchungen per Telefon, E-Mail und Chat.">                    Handled customer inquiries, modifications, and complaints for hotel bookings via phone, email, and chat.                </li>                <li data-en="Delivered high-quality service with empathy and professionalism in a high-volume environment."                    data-de="Hochwertiger Service mit Empathie und Professionalität in einer Umgebung mit hohem Volumen.">                    Delivered high-quality service with empathy and professionalism in a high-volume environment.                </li>                <li data-en="Maintained 95%+ customer satisfaction and consistently met resolution and response time KPIs."                    data-de="Erzielte über 95% Kundenzufriedenheit und erfüllte regelmäßig KPIs für Lösungs- und Antwortzeiten.">                    Maintained 95%+ customer satisfaction and consistently met resolution and response time KPIs.                </li>                <li data-en="Navigated multiple systems to manage reservations and collaborate with internal Departments."                    data-de="Arbeit mit mehreren Systemen zur Verwaltung von Reservierungen und Zusammenarbeit mit internen Abteilungen.">                    Navigated multiple systems to manage reservations and collaborate with internal Departments.                </li>            </ul>        </li>        <li data-en="Freelance Web Developer – GlobeScholars, Jan 2023 – Apr 2023"            data-de="Freiberuflicher Webentwickler – GlobeScholars, Jan 2023 – Apr 2023">            Freelance Web Developer – GlobeScholars, Jan 2023 – Apr 2023            <ul>                <li data-en="Built and deployed the entire website for a startup helping students study abroad: https://go-scholars.com"                    data-de="Komplette Website für ein Startup zum Auslandsstudium gebaut und bereitgestellt: https://go-scholars.com">                    Built and deployed the entire website for a startup helping students study abroad: https://go-scholars.com                </li>                <li data-en="Developed responsive frontend using Bootstrap, integrated backend with PHP and Node.js, and managed CMS via Joomla."                    data-de="Responsives Frontend mit Bootstrap entwickelt, Backend mit PHP und Node.js integriert, CMS über Joomla verwaltet.">                    Developed responsive frontend using Bootstrap, integrated backend with PHP and Node.js, and managed CMS via Joomla.                </li>                <li data-en="Coordinated with the client on site structure, design, and deployment needs."                    data-de="Mit dem Kunden über Seitenstruktur, Design und Bereitstellung abgestimmt.">                    Coordinated with the client on site structure, design, and deployment needs.                </li>            </ul>        </li>        <li data-en="Production Supervisor (Part-Time) – Tunis Neon, 2016 – 2022"            data-de="Produktionsleiter (Teilzeit) – Tunis Neon, 2016 – 2022">            Production Supervisor (Part-Time) – Tunis Neon, 2016 – 2022            <ul>                <li data-en="Oversaw laser cutting machinery and monitored daily production activities to ensure safety and timeliness."                    data-de="Überwachung von Laserschneidmaschinen und täglicher Produktion zur Sicherstellung von Sicherheit und Termintreue.">                    Oversaw laser cutting machinery and monitored daily production activities to ensure safety and timeliness.                </li>                <li data-en="Created vector models and signage designs using CorelDRAW for customized client requests."                    data-de="Erstellung von Vektormodellen und Schilderdesigns mit CorelDRAW für individuelle Kundenwünsche.">                    Created vector models and signage designs using CorelDRAW for customized client requests.                </li>                <li data-en="Implemented updated safety procedures and introduced new materials, reducing fire risk and improving machine durability."                    data-de="Neue Sicherheitsverfahren und Materialien eingeführt, Brandrisiko reduziert und Maschinenhaltbarkeit verbessert.">                    Implemented updated safety procedures and introduced new materials, reducing fire risk and improving machine durability.                </li>                <li data-en="Managed on-site troubleshooting and workflow efficiency for tight project deadlines."                    data-de="Vor-Ort-Fehlerbehebung und Workflow-Effizienz für enge Projektfristen verwaltet.">                    Managed on-site troubleshooting and workflow efficiency for tight project deadlines.                </li>            </ul>        </li>    </ul>    <h2 data-en="Languages" data-de="Sprachen">Languages</h2>    <ul>        <li data-en="English – C2" data-de="Englisch – C2">English – C2</li>        <li data-en="French – B2" data-de="Französisch – B2">French – B2</li>        <li data-en="Arabic – C2" data-de="Arabisch – C2">Arabic – C2</li>        <li data-en="German – B1" data-de="Deutsch – B1">German – B1</li>    </ul></section><section id="projects">    <h1 data-en="Projects" data-de="Projekte">Projects</h1>    <div class="project">        <h3 data-en="Project Title" data-de="Projekttitel">Project Title</h3>        <p data-en="Description of technical implementation and applied principles."           data-de="Beschreibung der technischen Umsetzung und angewandter Prinzipien.">           Description of technical implementation and applied principles.        </p>        <img src="project1.jpg" alt="Project image" loading="lazy">    </div></section><section id="contact">    <h1 data-en="Contact" data-de="Kontakt">Contact</h1>    <p data-en="Feel free to reach out for opportunities or questions."       data-de="Kontaktieren Sie mich gerne für Möglichkeiten oder Fragen.">       Feel free to reach out for opportunities or questions.    </p>    <ul>        <li>Email: <a href="mailto:ahmed.neji@email.com">ahmed.neji@email.com</a></li>        <li>LinkedIn: <a href="https://linkedin.com/in/ahmedneji" target="_blank">linkedin.com/in/ahmedneji</a></li>    </ul></section><footer>    © 2026 Ahmed Neji</footer><script>function showSection(id) {    document.querySelectorAll("section").forEach(section => {        section.classList.remove("active");    });    document.getElementById(id).classList.add("active");    // Highlight active nav button    document.querySelectorAll('.nav-left button').forEach(btn => btn.classList.remove('active'));    const navBtn = document.getElementById('nav-' + id);    if (navBtn) navBtn.classList.add('active');    // Update hash    location.hash = id;}function setLanguage(lang) {    document.querySelectorAll("[data-en]").forEach(element => {        element.textContent = element.getAttribute("data-" + lang);
     });
-    document.getElementById(id).classList.add("active");
+    document.documentElement.lang = lang;
+    localStorage.setItem('lang', lang);
+    // Highlight active language button
+    document.querySelectorAll('.nav-right button').forEach(btn => btn.classList.remove('active'));
+    const langBtn = document.getElementById('lang-' + lang);
+    if (langBtn) langBtn.classList.add('active');
 }
 
-function setLanguage(lang) {
-    document.querySelectorAll("[data-en]").forEach(element => {
-        element.textContent = element.getAttribute("data-" + lang);
-    });
-}
+// Restore language and section from localStorage/hash
+(function init() {
+    const lang = localStorage.getItem('lang') || 'en';
+    setLanguage(lang);
+    const hash = location.hash.replace('#','') || 'overview';
+    showSection(hash);
+})();
 </script>
 
 </body>
