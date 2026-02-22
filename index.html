@@ -16,64 +16,61 @@
 body {
     background-color: #0d0d0d;
     color: #e6e6e6;
-    line-height: 1.7;
 }
 
-header {
-    height: 100vh;
+nav {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding: 20px 40px;
     border-bottom: 1px solid #1a1a1a;
-    text-align: center;
-    padding: 0 20px;
 }
 
-header h1 {
-    font-size: 3rem;
-    font-weight: 400;
-    letter-spacing: 2px;
+.nav-left button,
+.nav-right button {
+    background: none;
+    border: none;
+    color: #e6e6e6;
+    margin-right: 20px;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
-header p {
-    margin-top: 15px;
+.nav-left button:hover,
+.nav-right button:hover {
     color: #888;
-    font-size: 1.1rem;
 }
 
 section {
     max-width: 900px;
-    margin: auto;
-    padding: 80px 20px;
+    margin: 80px auto;
+    padding: 0 20px;
+    display: none;
 }
 
-h2 {
+section.active {
+    display: block;
+}
+
+h1 {
     font-weight: 400;
     margin-bottom: 30px;
-    border-bottom: 1px solid #1a1a1a;
-    padding-bottom: 10px;
 }
 
 .project {
-    margin-bottom: 60px;
-}
-
-.project h3 {
-    font-weight: 400;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
 }
 
 .project img {
     width: 100%;
-    border-radius: 8px;
     margin-top: 20px;
+    border-radius: 8px;
     opacity: 0.9;
 }
 
 .project img:hover {
     opacity: 1;
-    transition: 0.3s ease;
+    transition: 0.3s;
 }
 
 footer {
@@ -81,72 +78,73 @@ footer {
     padding: 40px;
     border-top: 1px solid #1a1a1a;
     color: #666;
-    font-size: 0.9rem;
-}
-
-a {
-    color: #e6e6e6;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #999;
-}
-
-@media(max-width: 600px){
-    header h1 {
-        font-size: 2.2rem;
-    }
+    margin-top: 80px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Ahmed Neji</h1>
-    <p>Technical Portfolio · Mechanical & Industrial Systems</p>
-</header>
+<nav>
+    <div class="nav-left">
+        <button onclick="showSection('overview')">Overview</button>
+        <button onclick="showSection('career')">Career</button>
+        <button onclick="showSection('projects')">Projects</button>
+    </div>
 
-<section>
-    <h2>About Me</h2>
-    <p>
-        I am a technically driven individual with strong problem-solving abilities and a hands-on approach to learning. 
-        My focus lies in mechanical systems, industrial processes, and structured technical troubleshooting. 
-        I continuously expand my knowledge through practical projects and independent study.
+    <div class="nav-right">
+        <button onclick="setLanguage('en')">EN</button>
+        <button onclick="setLanguage('de')">DE</button>
+    </div>
+</nav>
+
+<section id="overview" class="active">
+    <h1 data-en="Overview" data-de="Übersicht">Overview</h1>
+    <p data-en="Technical portfolio focused on mechanical and industrial systems."
+       data-de="Technisches Portfolio mit Fokus auf mechanische und industrielle Systeme.">
+       Technical portfolio focused on mechanical and industrial systems.
     </p>
 </section>
 
-<section>
-    <h2>Technical Skills</h2>
-    <p>
-        Mechanical systems · Basic electronics · Technical troubleshooting · 
-        CAD fundamentals · Process analysis · Structured problem solving · 
-        Industrial workflows
+<section id="career">
+    <h1 data-en="Career" data-de="Werdegang">Career</h1>
+    <p data-en="Information about professional development and technical growth."
+       data-de="Informationen über berufliche Entwicklung und technisches Wachstum.">
+       Information about professional development and technical growth.
     </p>
 </section>
 
-<section>
-    <h2>Projects</h2>
+<section id="projects">
+    <h1 data-en="Projects" data-de="Projekte">Projects</h1>
 
     <div class="project">
-        <h3>Project Title</h3>
-        <p>
-            Short description of what you built, how it works, and what technical principles were applied.
+        <h3 data-en="Project Title" data-de="Projekttitel">Project Title</h3>
+        <p data-en="Description of technical implementation and applied principles."
+           data-de="Beschreibung der technischen Umsetzung und angewandter Prinzipien.">
+           Description of technical implementation and applied principles.
         </p>
         <img src="project1.jpg" alt="Project image">
     </div>
-
-</section>
-
-<section>
-    <h2>Contact</h2>
-    <p>Email: your.email@example.com</p>
 </section>
 
 <footer>
     © 2026 Ahmed Neji
 </footer>
+
+<script>
+function showSection(id) {
+    document.querySelectorAll("section").forEach(section => {
+        section.classList.remove("active");
+    });
+    document.getElementById(id).classList.add("active");
+}
+
+function setLanguage(lang) {
+    document.querySelectorAll("[data-en]").forEach(element => {
+        element.textContent = element.getAttribute("data-" + lang);
+    });
+}
+</script>
 
 </body>
 </html>
