@@ -12,7 +12,7 @@ const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
 // sidebar toggle functionality for mobile
-if (sidebarBtn && sidebar) {
+if (sidebarBtn) {
   sidebarBtn.addEventListener("click", function () {
     elementToggleFunc(sidebar);
   });
@@ -53,8 +53,11 @@ for (let i = 0; i < testimonialsItem.length; i++) {
 }
 
 // add click event to modal close button
-if (modalCloseBtn && overlay) {
+if (modalCloseBtn) {
   modalCloseBtn.addEventListener("click", testimonialsModalFunc);
+}
+
+if (overlay) {
   overlay.addEventListener("click", testimonialsModalFunc);
 }
 
@@ -65,8 +68,11 @@ const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");
 const selectValue = document.querySelector("[data-select-value]");
 const filterBtn = document.querySelectorAll("[data-filter-btn]");
-select.addEventListener("click", function () { elementToggleFunc(this); });
-
+if (select) {
+  select.addEventListener("click", function () {
+    elementToggleFunc(this);
+  });
+}
 // add event in all select items
 for (let i = 0; i < selectItems.length; i++) {
   selectItems[i].addEventListener("click", function () {
