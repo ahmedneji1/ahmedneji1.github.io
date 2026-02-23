@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>vCard - Personal Portfolio</title>
+  <title>Ahmed Neji — Portfolio</title>
 
   <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
   <link rel="stylesheet" href="./assets/css/style.css">
@@ -14,7 +14,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    /* Language Switcher */
+    /* ─── Color Palette Override ─────────────────────────────── */
+    :root {
+      --bg-primary:   hsl(270, 12%, 9%);
+      --bg-secondary: hsl(270, 10%, 13%);
+      --bg-card:      hsl(270, 10%, 16%);
+      --border:       hsl(270, 8%, 22%);
+      --accent:       hsl(340, 80%, 80%);
+      --text-main:    hsl(270, 5%, 92%);
+      --text-muted:   hsl(270, 5%, 60%);
+    }
+
+    body { background-color: var(--bg-primary); }
+    .sidebar { background: var(--bg-secondary); border-color: var(--border); }
+
+    .skill-progress-fill {
+      background: linear-gradient(90deg, hsl(340,80%,80%), hsl(310,70%,85%));
+    }
+
+    /* ─── Language Switcher ───────────────────────────────────── */
     .lang-switcher {
       position: fixed;
       top: 16px;
@@ -23,17 +41,16 @@
       display: flex;
       align-items: center;
       gap: 4px;
-      background: hsl(240, 2%, 12%);
-      border: 1px solid hsl(0, 0%, 22%);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
       border-radius: 8px;
       padding: 4px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
-
     .lang-btn {
       background: transparent;
       border: none;
-      color: hsl(0, 0%, 60%);
+      color: hsl(270, 5%, 60%);
       font-family: 'Poppins', sans-serif;
       font-size: 12px;
       font-weight: 500;
@@ -43,14 +60,83 @@
       transition: all 0.2s ease;
       letter-spacing: 0.5px;
     }
-
-    .lang-btn:hover {
-      color: hsl(0, 0%, 98%);
+    .lang-btn:hover { color: hsl(270, 5%, 92%); }
+    .lang-btn.active {
+      background: hsl(270, 8%, 22%);
+      color: hsl(340, 80%, 80%);
     }
 
-    .lang-btn.active {
-      background: hsl(0, 0%, 25%);
-      color: hsl(45, 100%, 72%);
+    /* ─── Skills: tag chips ──────────────────────────────────── */
+    .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
+      list-style: none;
+      margin: 0;
+    }
+    .skills-tags li {
+      background: hsl(270, 10%, 20%);
+      border: 1px solid hsl(270, 8%, 22%);
+      color: hsl(270, 5%, 92%);
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      padding: 6px 14px;
+      border-radius: 20px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .skills-tags li:hover {
+      border-color: hsl(340, 80%, 80%);
+      color: hsl(340, 80%, 80%);
+    }
+
+    /* ─── Volunteer section ──────────────────────────────────── */
+    .volunteer-list {
+      display: grid;
+      gap: 20px;
+      padding: 0;
+      list-style: none;
+    }
+    .volunteer-item {
+      border-radius: 14px;
+      padding: 24px;
+      border: 1px solid hsl(270, 8%, 22%);
+      background: hsl(270, 10%, 16%);
+    }
+    .volunteer-item h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: hsl(270, 5%, 92%);
+      margin-bottom: 4px;
+    }
+    .volunteer-item .vol-org {
+      display: block;
+      font-size: 13px;
+      color: hsl(340, 80%, 80%);
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    .volunteer-item p {
+      font-size: 14px;
+      color: hsl(270, 5%, 60%);
+      line-height: 1.7;
+    }
+
+    /* ─── International note strip ──────────────────────────── */
+    .intl-note {
+      margin-top: 20px;
+      padding: 16px 20px;
+      background: hsl(270, 10%, 16%);
+      border-left: 3px solid hsl(340, 80%, 80%);
+      border-radius: 0 10px 10px 0;
+      font-size: 14px;
+      color: hsl(270, 5%, 60%);
+      line-height: 1.6;
+    }
+    .intl-note strong {
+      color: hsl(270, 5%, 92%);
+      font-weight: 500;
     }
   </style>
 </head>
@@ -65,36 +151,28 @@
 
   <main>
 
+    <!-- SIDEBAR -->
     <aside class="sidebar" data-sidebar>
-
       <div class="sidebar-info">
-
         <figure class="avatar-box">
-          <img src="./assets/images/my-avatar.png" alt="Richard hanrick" width="80">
+          <img src="./assets/images/my-avatar.png" alt="Ahmed Neji" width="80">
         </figure>
-
         <div class="info-content">
-          <h1 class="name" title="Richard hanrick">Richard hanrick</h1>
-          <p class="title" data-i18n="job_title">Web developer</p>
+          <h1 class="name" title="Ahmed Neji">Ahmed Neji</h1>
+          <p class="title" data-i18n="job_title">Background in Engineering</p>
         </div>
-
         <button class="info_more-btn" data-sidebar-btn>
           <span data-i18n="show_contacts">Show Contacts</span>
           <ion-icon name="chevron-down"></ion-icon>
         </button>
-
       </div>
 
       <div class="sidebar-info_more">
-
         <div class="separator"></div>
-
         <ul class="contacts-list">
 
           <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
+            <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
             <div class="contact-info">
               <p class="contact-title" data-i18n="contact_email">Email</p>
               <a href="mailto:richard@example.com" class="contact-link">richard@example.com</a>
@@ -102,9 +180,7 @@
           </li>
 
           <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
-            </div>
+            <div class="icon-box"><ion-icon name="phone-portrait-outline"></ion-icon></div>
             <div class="contact-info">
               <p class="contact-title" data-i18n="contact_phone">Phone</p>
               <a href="tel:+12133522795" class="contact-link">+1 (213) 352-2795</a>
@@ -112,9 +188,7 @@
           </li>
 
           <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="calendar-outline"></ion-icon>
-            </div>
+            <div class="icon-box"><ion-icon name="calendar-outline"></ion-icon></div>
             <div class="contact-info">
               <p class="contact-title" data-i18n="contact_birthday">Birthday</p>
               <time datetime="1982-06-23">June 23, 1982</time>
@@ -122,401 +196,272 @@
           </li>
 
           <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
+            <div class="icon-box"><ion-icon name="location-outline"></ion-icon></div>
             <div class="contact-info">
               <p class="contact-title" data-i18n="contact_location">Location</p>
-              <address>Sacramento, California, USA</address>
+              <address>Tunis, Tunisia</address>
             </div>
           </li>
 
         </ul>
-
         <div class="separator"></div>
-
         <ul class="social-list">
           <li class="social-item">
-            <a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a>
+            <a href="#" class="social-link"><ion-icon name="logo-github"></ion-icon></a>
           </li>
           <li class="social-item">
-            <a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a>
+            <a href="#" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a>
           </li>
           <li class="social-item">
             <a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a>
           </li>
         </ul>
-
       </div>
-
     </aside>
 
+    <!-- MAIN CONTENT -->
     <div class="main-content">
 
       <nav class="navbar">
         <ul class="navbar-list">
           <li class="navbar-item">
-            <button class="navbar-link active" data-nav-link data-i18n="nav_about">About</button>
+            <button class="navbar-link active" data-nav-link data-page-target="about" data-i18n="nav_about">About</button>
           </li>
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-i18n="nav_resume">Resume</button>
+            <button class="navbar-link" data-nav-link data-page-target="resume" data-i18n="nav_resume">Resume</button>
           </li>
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-i18n="nav_portfolio">Portfolio</button>
+            <button class="navbar-link" data-nav-link data-page-target="portfolio" data-i18n="nav_portfolio">Portfolio</button>
           </li>
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-i18n="nav_blog">Blog</button>
+            <button class="navbar-link" data-nav-link data-page-target="projects" data-i18n="nav_projects">Projects</button>
           </li>
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-i18n="nav_contact">Contact</button>
+            <button class="navbar-link" data-nav-link data-page-target="volunteer" data-i18n="nav_volunteer">Volunteer</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link data-page-target="contact" data-i18n="nav_contact">Contact</button>
           </li>
         </ul>
       </nav>
 
-      <!-- #ABOUT -->
+      <!-- ═══ ABOUT ═══ -->
       <article class="about active" data-page="about">
 
         <header>
-          <h2 class="h2 article-title" data-i18n="nav_about">About me</h2>
+          <h2 class="h2 article-title" data-i18n="nav_about">About</h2>
         </header>
 
         <section class="about-text">
           <p data-i18n="about_p1">
-            I'm Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print media.
-            I enjoy turning complex problems into simple, beautiful and intuitive designs.
+            Robotics-focused with a background in engineering and a strong foundation in embedded systems, mechanical integration, and hands-on technical execution. I thrive in complex environments where hardware, software, and problem-solving intersect.
           </p>
           <p data-i18n="about_p2">
-            My job is to build your website so that it is functional and user-friendly but at the same time attractive.
-            Moreover, I add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring
-            across your message and identity in the most creative way. I created web design for many famous brand companies.
+            My long-term ambition lies in advanced robotics research, particularly at the intersection between intelligent systems and emerging micro-scale technologies. I am driven by curiosity, system-level thinking, and the challenge of building machines that interact meaningfully with the physical world.
           </p>
+          <p data-i18n="about_p3">
+            In the near term, I aim to deepen my expertise in mechatronics, embedded control, and industrial system integration — contributing to technically demanding environments while continuously expanding my engineering scope.
+          </p>
+          <div class="intl-note">
+            <strong data-i18n="intl_label">International Readiness:</strong>
+            <span data-i18n="intl_text"> Open to international opportunities and long-term professional development in technical fields abroad.</span>
+          </div>
         </section>
 
         <section class="service">
-
-          <h3 class="h3 service-title" data-i18n="service_title">What i'm doing</h3>
-
+          <h3 class="h3 service-title" data-i18n="service_title">What I Do</h3>
           <ul class="service-list">
 
             <li class="service-item">
               <div class="service-icon-box">
-                <img src="./assets/images/icon-design.svg" alt="design icon" width="40">
+                <img src="./assets/images/icon-dev.svg" alt="embedded icon" width="40">
               </div>
               <div class="service-content-box">
-                <h4 class="h4 service-item-title" data-i18n="service_webdesign_title">Web design</h4>
-                <p class="service-item-text" data-i18n="service_webdesign_text">
-                  The most modern and high-quality design made at a professional level.
+                <h4 class="h4 service-item-title" data-i18n="service_embedded_title">Embedded Systems</h4>
+                <p class="service-item-text" data-i18n="service_embedded_text">
+                  Hardware-software integration, microcontrollers, and real-time control systems.
                 </p>
               </div>
             </li>
 
             <li class="service-item">
               <div class="service-icon-box">
-                <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
+                <img src="./assets/images/icon-app.svg" alt="robotics icon" width="40">
               </div>
               <div class="service-content-box">
-                <h4 class="h4 service-item-title" data-i18n="service_webdev_title">Web development</h4>
+                <h4 class="h4 service-item-title" data-i18n="service_robotics_title">Robotics & Mechatronics</h4>
+                <p class="service-item-text" data-i18n="service_robotics_text">
+                  System-level design, mechanical assembly, and intelligent control integration.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-design.svg" alt="web icon" width="40">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title" data-i18n="service_webdev_title">Web Development</h4>
                 <p class="service-item-text" data-i18n="service_webdev_text">
-                  High-quality development of sites at the professional level.
+                  Full-stack web applications from design through to deployment.
                 </p>
               </div>
             </li>
 
             <li class="service-item">
               <div class="service-icon-box">
-                <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
+                <img src="./assets/images/icon-photo.svg" alt="mobile icon" width="40">
               </div>
               <div class="service-content-box">
-                <h4 class="h4 service-item-title" data-i18n="service_apps_title">Mobile apps</h4>
-                <p class="service-item-text" data-i18n="service_apps_text">
-                  Professional development of applications for iOS and Android.
-                </p>
-              </div>
-            </li>
-
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
-              </div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title" data-i18n="service_photo_title">Photography</h4>
-                <p class="service-item-text" data-i18n="service_photo_text">
-                  I make high-quality photos of any category at a professional level.
+                <h4 class="h4 service-item-title" data-i18n="service_mobile_title">Mobile Apps</h4>
+                <p class="service-item-text" data-i18n="service_mobile_text">
+                  Cross-platform app development with Flutter for iOS and Android.
                 </p>
               </div>
             </li>
 
           </ul>
-
-        </section>
-
-        <!-- testimonials -->
-        <section class="testimonials">
-
-          <h3 class="h3 testimonials-title" data-i18n="testimonials_title">Testimonials</h3>
-
-          <ul class="testimonials-list has-scrollbar">
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
-                </figure>
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel lewis</h4>
-                <div class="testimonials-text" data-testimonials-text>
-                  <p data-i18n="testimonial_text">
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar>
-                </figure>
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica miller</h4>
-                <div class="testimonials-text" data-testimonials-text>
-                  <p data-i18n="testimonial_text">
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-3.png" alt="Emily evans" width="60" data-testimonials-avatar>
-                </figure>
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Emily evans</h4>
-                <div class="testimonials-text" data-testimonials-text>
-                  <p data-i18n="testimonial_text">
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar>
-                </figure>
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry william</h4>
-                <div class="testimonials-text" data-testimonials-text>
-                  <p data-i18n="testimonial_text">
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-              </div>
-            </li>
-
-          </ul>
-
-        </section>
-
-        <!-- testimonials modal -->
-        <div class="modal-container" data-modal-container>
-
-          <div class="overlay" data-overlay></div>
-
-          <section class="testimonials-modal">
-
-            <button class="modal-close-btn" data-modal-close-btn>
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-
-            <div class="modal-img-wrapper">
-              <figure class="modal-avatar-box">
-                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
-              </figure>
-              <img src="./assets/images/icon-quote.svg" alt="quote icon">
-            </div>
-
-            <div class="modal-content">
-              <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
-              <time datetime="2021-06-14">14 June, 2021</time>
-              <div data-modal-text>
-                <p data-i18n="testimonial_text">
-                  Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                  lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                  consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                </p>
-              </div>
-            </div>
-
-          </section>
-
-        </div>
-
-        <!-- clients -->
-        <section class="clients">
-
-          <h3 class="h3 clients-title" data-i18n="clients_title">Clients</h3>
-
-          <ul class="clients-list has-scrollbar">
-            <li class="clients-item"><a href="#"><img src="./assets/images/logo-1-color.png" alt="client logo"></a></li>
-            <li class="clients-item"><a href="#"><img src="./assets/images/logo-2-color.png" alt="client logo"></a></li>
-            <li class="clients-item"><a href="#"><img src="./assets/images/logo-3-color.png" alt="client logo"></a></li>
-            <li class="clients-item"><a href="#"><img src="./assets/images/logo-4-color.png" alt="client logo"></a></li>
-            <li class="clients-item"><a href="#"><img src="./assets/images/logo-5-color.png" alt="client logo"></a></li>
-            <li class="clients-item"><a href="#"><img src="./assets/images/logo-6-color.png" alt="client logo"></a></li>
-          </ul>
-
         </section>
 
       </article>
 
-      <!-- #RESUME -->
+      <!-- ═══ RESUME ═══ -->
       <article class="resume" data-page="resume">
 
         <header>
           <h2 class="h2 article-title" data-i18n="nav_resume">Resume</h2>
         </header>
 
+        <!-- Education -->
         <section class="timeline">
-
           <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
+            <div class="icon-box"><ion-icon name="book-outline"></ion-icon></div>
             <h3 class="h3" data-i18n="resume_education">Education</h3>
           </div>
-
           <ol class="timeline-list">
 
             <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">University school of the arts</h4>
-              <span>2007 — 2008</span>
-              <p class="timeline-text">
-                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-                quas molestias exceptur.
+              <h4 class="h4 timeline-item-title">National Institute of Applied Science and Technology (INSAT)</h4>
+              <span data-i18n="edu_insat_period">Tunis, Tunisia — Engineering Program</span>
+              <p class="timeline-text" data-i18n="edu_insat_text">
+                Focus on Robotics, Embedded Systems, and System Integration. Long-term goal: advancing robotics and microsystem technologies.
               </p>
             </li>
 
             <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">New york academy of art</h4>
-              <span>2006 — 2007</span>
-              <p class="timeline-text">
-                Ratione voluptatem sequi nesciunt, facere quisquams facere menda ossimus, omnis voluptas assumenda est omnis..
-              </p>
-            </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">High school of art and design</h4>
-              <span>2002 — 2004</span>
-              <p class="timeline-text">
-                Duis aute irure dolor in reprehenderit in voluptate, quila voluptas mag odit aut fugit, sed consequuntur
-                magni dolores eos.
-              </p>
+              <h4 class="h4 timeline-item-title" data-i18n="edu_bac_title">Tunisian Baccalaureate — Mathematics</h4>
+              <span data-i18n="edu_bac_grade">Grade: 18.11/20 · German equivalent: ~1.0–1.2</span>
+              <p class="timeline-text" data-i18n="edu_bac_text">SAT: 1480</p>
             </li>
 
           </ol>
-
         </section>
 
+        <!-- Experience -->
         <section class="timeline">
-
           <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
+            <div class="icon-box"><ion-icon name="briefcase-outline"></ion-icon></div>
             <h3 class="h3" data-i18n="resume_experience">Experience</h3>
           </div>
-
           <ol class="timeline-list">
 
             <li class="timeline-item">
-              <h4 class="h4 timeline-item-title" data-i18n="job_creative_director">Creative director</h4>
-              <span>2015 — Present</span>
-              <p class="timeline-text">
-                Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti, quos dolores et qvuas molestias exceptur.
+              <h4 class="h4 timeline-item-title" data-i18n="job_csr_title">Customer Service Representative</h4>
+              <span>Assist Digital — Booking.com Support</span>
+              <p class="timeline-text" data-i18n="job_csr_text">
+                Structured customer support in a KPI-driven corporate environment. Resolved service and technical inquiries via phone, email, and chat. Maintained high communication quality in English. Developed strong problem-solving and operational discipline.
               </p>
             </li>
 
             <li class="timeline-item">
-              <h4 class="h4 timeline-item-title" data-i18n="job_art_director">Art director</h4>
-              <span>2013 — 2015</span>
-              <p class="timeline-text">
-                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et quas molestias exceptur.
+              <h4 class="h4 timeline-item-title" data-i18n="job_freelance_title">Freelance Web Developer</h4>
+              <span data-i18n="job_freelance_period">Independent</span>
+              <p class="timeline-text" data-i18n="job_freelance_text">
+                Designed and deployed full web applications for clients. Managed the complete development lifecycle: design → implementation → deployment. Worked with frontend and backend technologies including PHP and Node.js. Strengthened client communication and technical requirement translation.
               </p>
             </li>
 
             <li class="timeline-item">
-              <h4 class="h4 timeline-item-title" data-i18n="job_web_designer">Web designer</h4>
-              <span>2010 — 2013</span>
-              <p class="timeline-text">
-                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et quas molestias exceptur.
+              <h4 class="h4 timeline-item-title" data-i18n="job_prod_title">Technical Production Assistant</h4>
+              <span>Tunis Neon — Part Time</span>
+              <p class="timeline-text" data-i18n="job_prod_text">
+                Assisted in laser cutting and production workflows. Worked with electrical wiring and mechanical assembly. Improved safety procedures and operational efficiency. Gained practical industrial production experience.
               </p>
             </li>
 
           </ol>
-
         </section>
 
+        <!-- Certifications -->
+        <section class="timeline">
+          <div class="title-wrapper">
+            <div class="icon-box"><ion-icon name="ribbon-outline"></ion-icon></div>
+            <h3 class="h3" data-i18n="resume_certs">Certifications</h3>
+          </div>
+          <ol class="timeline-list">
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">telc Deutsch B1 Zertifikat</h4>
+              <span data-i18n="cert_b1_detail">Certified German B1</span>
+            </li>
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title" data-i18n="cert_b2_title">Preparing for Deutsch B2</h4>
+              <span data-i18n="cert_b2_detail">Self-study · Summer 2025 – present</span>
+            </li>
+          </ol>
+        </section>
+
+        <!-- Languages -->
+        <section class="timeline">
+          <div class="title-wrapper">
+            <div class="icon-box"><ion-icon name="language-outline"></ion-icon></div>
+            <h3 class="h3" data-i18n="resume_languages">Languages</h3>
+          </div>
+          <ol class="timeline-list">
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">English</h4>
+              <span data-i18n="lang_en_level">Fluent</span>
+            </li>
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Deutsch</h4>
+              <span>B1 certified · B2 in progress</span>
+            </li>
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Français</h4>
+              <span>B2</span>
+            </li>
+          </ol>
+        </section>
+
+        <!-- Skills -->
         <section class="skill">
-
-          <h3 class="h3 skills-title" data-i18n="resume_skills">My skills</h3>
-
-          <ul class="skills-list content-card">
-
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">Web design</h5>
-                <data value="80">80%</data>
-              </div>
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
-              </div>
-            </li>
-
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">Graphic design</h5>
-                <data value="70">70%</data>
-              </div>
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 70%;"></div>
-              </div>
-            </li>
-
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">Branding</h5>
-                <data value="90">90%</data>
-              </div>
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-            </li>
-
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">WordPress</h5>
-                <data value="50">50%</data>
-              </div>
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 50%;"></div>
-              </div>
-            </li>
-
-          </ul>
-
+          <h3 class="h3 skills-title" data-i18n="resume_skills">Technical Skills</h3>
+          <div class="content-card" style="padding: 4px;">
+            <ul class="skills-tags">
+              <li>C / C++</li>
+              <li>Python</li>
+              <li>Flutter / Dart</li>
+              <li>Node.js</li>
+              <li>PHP</li>
+              <li>HTML / CSS / JS</li>
+              <li>Arduino</li>
+              <li>Raspberry Pi</li>
+              <li>ROS (basics)</li>
+              <li>SolidWorks</li>
+              <li>Linux</li>
+              <li>Git</li>
+              <li>SQL</li>
+              <li>Firebase</li>
+              <li>REST APIs</li>
+              <li>Laser Cutting</li>
+              <li>PCB Basics</li>
+              <li>Embedded C</li>
+            </ul>
+          </div>
         </section>
 
       </article>
 
-      <!-- #PORTFOLIO -->
+      <!-- ═══ PORTFOLIO ═══ -->
       <article class="portfolio" data-page="portfolio">
 
         <header>
@@ -527,23 +472,21 @@
 
           <ul class="filter-list">
             <li class="filter-item"><button class="active" data-filter-btn data-i18n="filter_all">All</button></li>
-            <li class="filter-item"><button data-filter-btn data-i18n="service_webdesign_title">Web design</button></li>
-            <li class="filter-item"><button data-filter-btn data-i18n="filter_apps">Applications</button></li>
             <li class="filter-item"><button data-filter-btn data-i18n="service_webdev_title">Web development</button></li>
+            <li class="filter-item"><button data-filter-btn data-i18n="filter_apps">Applications</button></li>
+            <li class="filter-item"><button data-filter-btn data-i18n="filter_embedded">Embedded</button></li>
           </ul>
 
           <div class="filter-select-box">
             <button class="filter-select" data-select>
               <div class="select-value" data-selecct-value data-i18n="filter_select">Select category</div>
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
-              </div>
+              <div class="select-icon"><ion-icon name="chevron-down"></ion-icon></div>
             </button>
             <ul class="select-list">
               <li class="select-item"><button data-select-item data-i18n="filter_all">All</button></li>
-              <li class="select-item"><button data-select-item data-i18n="service_webdesign_title">Web design</button></li>
-              <li class="select-item"><button data-select-item data-i18n="filter_apps">Applications</button></li>
               <li class="select-item"><button data-select-item data-i18n="service_webdev_title">Web development</button></li>
+              <li class="select-item"><button data-select-item data-i18n="filter_apps">Applications</button></li>
+              <li class="select-item"><button data-select-item data-i18n="filter_embedded">Embedded</button></li>
             </ul>
           </div>
 
@@ -571,17 +514,6 @@
               </a>
             </li>
 
-            <li class="project-item active" data-filter-item data-category="web design">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
-                </figure>
-                <h3 class="project-title">Fundo</h3>
-                <p class="project-category" data-i18n="service_webdesign_title">Web design</p>
-              </a>
-            </li>
-
             <li class="project-item active" data-filter-item data-category="applications">
               <a href="#">
                 <figure class="project-img">
@@ -590,28 +522,6 @@
                 </figure>
                 <h3 class="project-title">Brawlhalla</h3>
                 <p class="project-category" data-i18n="filter_apps">Applications</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="web design">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/project-5.png" alt="dsm." loading="lazy">
-                </figure>
-                <h3 class="project-title">DSM.</h3>
-                <p class="project-category" data-i18n="service_webdesign_title">Web design</p>
-              </a>
-            </li>
-
-            <li class="project-item active" data-filter-item data-category="web design">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/project-6.png" alt="metaspark" loading="lazy">
-                </figure>
-                <h3 class="project-title">MetaSpark</h3>
-                <p class="project-category" data-i18n="service_webdesign_title">Web design</p>
               </a>
             </li>
 
@@ -654,11 +564,11 @@
 
       </article>
 
-      <!-- #BLOG -->
-      <article class="blog" data-page="blog">
+      <!-- ═══ PROJECTS (formerly Blog) ═══ -->
+      <article class="blog" data-page="projects">
 
         <header>
-          <h2 class="h2 article-title" data-i18n="nav_blog">Blog</h2>
+          <h2 class="h2 article-title" data-i18n="nav_projects">Projects</h2>
         </header>
 
         <section class="blog-posts">
@@ -667,16 +577,18 @@
             <li class="blog-post-item">
               <a href="#">
                 <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy">
+                  <img src="./assets/images/blog-1.jpg" alt="WiFi RC Car" loading="lazy">
                 </figure>
                 <div class="blog-content">
                   <div class="blog-meta">
-                    <p class="blog-category" data-i18n="blog_category_design">Design</p>
+                    <p class="blog-category" data-i18n="proj_cat_embedded">Embedded</p>
                     <span class="dot"></span>
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                    <time datetime="2024-01-01">2024</time>
                   </div>
-                  <h3 class="h3 blog-item-title" data-i18n="blog_1_title">Design conferences in 2022</h3>
-                  <p class="blog-text" data-i18n="blog_1_text">Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.</p>
+                  <h3 class="h3 blog-item-title" data-i18n="proj_1_title">WiFi-Controlled RC Vehicle</h3>
+                  <p class="blog-text" data-i18n="proj_1_text">
+                    Built a WiFi-controlled RC car with a custom Flutter app as the controller interface.
+                  </p>
                 </div>
               </a>
             </li>
@@ -684,16 +596,18 @@
             <li class="blog-post-item">
               <a href="#">
                 <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-2.jpg" alt="Best fonts every designer" loading="lazy">
+                  <img src="./assets/images/blog-2.jpg" alt="AI Accountability App" loading="lazy">
                 </figure>
                 <div class="blog-content">
                   <div class="blog-meta">
-                    <p class="blog-category" data-i18n="blog_category_design">Design</p>
+                    <p class="blog-category" data-i18n="proj_cat_mobile">Mobile</p>
                     <span class="dot"></span>
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                    <time datetime="2024-01-01">2024</time>
                   </div>
-                  <h3 class="h3 blog-item-title" data-i18n="blog_2_title">Best fonts every designer</h3>
-                  <p class="blog-text" data-i18n="blog_2_text">Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.</p>
+                  <h3 class="h3 blog-item-title" data-i18n="proj_2_title">AI-Based Accountability App</h3>
+                  <p class="blog-text" data-i18n="proj_2_text">
+                    Developed a Flutter productivity app powered by AI to help users track and improve habits.
+                  </p>
                 </div>
               </a>
             </li>
@@ -701,67 +615,18 @@
             <li class="blog-post-item">
               <a href="#">
                 <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-3.jpg" alt="Design digest #80" loading="lazy">
+                  <img src="./assets/images/blog-3.jpg" alt="Robotics Projects" loading="lazy">
                 </figure>
                 <div class="blog-content">
                   <div class="blog-meta">
-                    <p class="blog-category" data-i18n="blog_category_design">Design</p>
+                    <p class="blog-category" data-i18n="proj_cat_robotics">Robotics</p>
                     <span class="dot"></span>
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                    <time datetime="2023-01-01">2023</time>
                   </div>
-                  <h3 class="h3 blog-item-title" data-i18n="blog_3_title">Design digest #80</h3>
-                  <p class="blog-text" data-i18n="blog_3_text">Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.</p>
-                </div>
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-4.jpg" alt="UI interactions of the week" loading="lazy">
-                </figure>
-                <div class="blog-content">
-                  <div class="blog-meta">
-                    <p class="blog-category" data-i18n="blog_category_design">Design</p>
-                    <span class="dot"></span>
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-                  <h3 class="h3 blog-item-title" data-i18n="blog_4_title">UI interactions of the week</h3>
-                  <p class="blog-text" data-i18n="blog_4_text">Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.</p>
-                </div>
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-5.jpg" alt="The forgotten art of spacing" loading="lazy">
-                </figure>
-                <div class="blog-content">
-                  <div class="blog-meta">
-                    <p class="blog-category" data-i18n="blog_category_design">Design</p>
-                    <span class="dot"></span>
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-                  <h3 class="h3 blog-item-title" data-i18n="blog_5_title">The forgotten art of spacing</h3>
-                  <p class="blog-text" data-i18n="blog_5_text">Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-6.jpg" alt="Design digest #79" loading="lazy">
-                </figure>
-                <div class="blog-content">
-                  <div class="blog-meta">
-                    <p class="blog-category" data-i18n="blog_category_design">Design</p>
-                    <span class="dot"></span>
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-                  <h3 class="h3 blog-item-title" data-i18n="blog_6_title">Design digest #79</h3>
-                  <p class="blog-text" data-i18n="blog_6_text">Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.</p>
+                  <h3 class="h3 blog-item-title" data-i18n="proj_3_title">Robotics & Embedded System Projects</h3>
+                  <p class="blog-text" data-i18n="proj_3_text">
+                    A series of hardware integration projects combining robotics, sensors, and embedded control.
+                  </p>
                 </div>
               </a>
             </li>
@@ -771,7 +636,38 @@
 
       </article>
 
-      <!-- #CONTACT -->
+      <!-- ═══ VOLUNTEER ═══ -->
+      <article class="blog" data-page="volunteer">
+
+        <header>
+          <h2 class="h2 article-title" data-i18n="nav_volunteer">Volunteer Work</h2>
+        </header>
+
+        <section class="blog-posts">
+          <ul class="volunteer-list">
+
+            <li class="volunteer-item">
+              <h3 data-i18n="vol_1_title">Add your volunteer role here</h3>
+              <span class="vol-org" data-i18n="vol_1_org">Organisation Name · Year</span>
+              <p data-i18n="vol_1_text">
+                Describe what you did, what you contributed, and what you learned. You can update this with your real volunteer experience.
+              </p>
+            </li>
+
+            <li class="volunteer-item">
+              <h3 data-i18n="vol_2_title">Add another role here</h3>
+              <span class="vol-org" data-i18n="vol_2_org">Organisation Name · Year</span>
+              <p data-i18n="vol_2_text">
+                Another volunteer experience or community contribution you want to highlight.
+              </p>
+            </li>
+
+          </ul>
+        </section>
+
+      </article>
+
+      <!-- ═══ CONTACT ═══ -->
       <article class="contact" data-page="contact">
 
         <header>
@@ -787,30 +683,23 @@
         </section>
 
         <section class="contact-form">
-
           <h3 class="h3 form-title" data-i18n="contact_form_title">Contact Form</h3>
-
           <form action="#" class="form" data-form>
-
             <div class="input-wrapper">
               <input type="text" name="fullname" class="form-input" data-i18n-placeholder="contact_placeholder_name" placeholder="Full name" required data-form-input>
               <input type="email" name="email" class="form-input" data-i18n-placeholder="contact_placeholder_email" placeholder="Email address" required data-form-input>
             </div>
-
             <textarea name="message" class="form-input" data-i18n-placeholder="contact_placeholder_message" placeholder="Your Message" required data-form-input></textarea>
-
             <button class="form-btn" type="submit" disabled data-form-btn>
               <ion-icon name="paper-plane"></ion-icon>
               <span data-i18n="contact_send">Send Message</span>
             </button>
-
           </form>
-
         </section>
 
       </article>
 
-    </div>
+    </div><!-- /main-content -->
 
   </main>
 
@@ -818,66 +707,85 @@
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-  <!-- i18n Translation Script -->
+  <!-- NAV FIX: data-page-target so translated button text never breaks routing -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const navLinks = document.querySelectorAll('[data-nav-link]');
+      const articles = document.querySelectorAll('[data-page]');
+
+      navLinks.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = btn.getAttribute('data-page-target');
+          navLinks.forEach(l => l.classList.remove('active'));
+          btn.classList.add('active');
+          articles.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('data-page') === target);
+          });
+        });
+      });
+    });
+  </script>
+
+  <!-- i18n -->
   <script>
     const translations = {
       en: {
-        // Nav
-        nav_about: "About",
-        nav_resume: "Resume",
-        nav_portfolio: "Portfolio",
-        nav_blog: "Blog",
-        nav_contact: "Contact",
-        // Sidebar
-        job_title: "Web developer",
+        nav_about: "About", nav_resume: "Resume", nav_portfolio: "Portfolio",
+        nav_projects: "Projects", nav_volunteer: "Volunteer", nav_contact: "Contact",
+        job_title: "Background in Engineering",
         show_contacts: "Show Contacts",
-        contact_email: "Email",
-        contact_phone: "Phone",
-        contact_birthday: "Birthday",
-        contact_location: "Location",
-        // About
-        about_p1: "I'm Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print media. I enjoy turning complex problems into simple, beautiful and intuitive designs.",
-        about_p2: "My job is to build your website so that it is functional and user-friendly but at the same time attractive. Moreover, I add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring across your message and identity in the most creative way. I created web design for many famous brand companies.",
-        service_title: "What i'm doing",
-        service_webdesign_title: "Web design",
-        service_webdesign_text: "The most modern and high-quality design made at a professional level.",
-        service_webdev_title: "Web development",
-        service_webdev_text: "High-quality development of sites at the professional level.",
-        service_apps_title: "Mobile apps",
-        service_apps_text: "Professional development of applications for iOS and Android.",
-        service_photo_title: "Photography",
-        service_photo_text: "I make high-quality photos of any category at a professional level.",
-        // Testimonials
-        testimonials_title: "Testimonials",
-        testimonial_text: "Richard was hired to create a corporate identity. We were very pleased with the work done. She has a lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.",
-        // Clients
-        clients_title: "Clients",
-        // Resume
+        contact_email: "Email", contact_phone: "Phone",
+        contact_birthday: "Birthday", contact_location: "Location",
+        about_p1: "Robotics-focused with a background in engineering and a strong foundation in embedded systems, mechanical integration, and hands-on technical execution. I thrive in complex environments where hardware, software, and problem-solving intersect.",
+        about_p2: "My long-term ambition lies in advanced robotics research, particularly at the intersection between intelligent systems and emerging micro-scale technologies. I am driven by curiosity, system-level thinking, and the challenge of building machines that interact meaningfully with the physical world.",
+        about_p3: "In the near term, I aim to deepen my expertise in mechatronics, embedded control, and industrial system integration — contributing to technically demanding environments while continuously expanding my engineering scope.",
+        intl_label: "International Readiness:",
+        intl_text: " Open to international opportunities and long-term professional development in technical fields abroad.",
+        service_title: "What I Do",
+        service_embedded_title: "Embedded Systems",
+        service_embedded_text: "Hardware-software integration, microcontrollers, and real-time control systems.",
+        service_robotics_title: "Robotics & Mechatronics",
+        service_robotics_text: "System-level design, mechanical assembly, and intelligent control integration.",
+        service_webdev_title: "Web Development",
+        service_webdev_text: "Full-stack web applications from design through to deployment.",
+        service_mobile_title: "Mobile Apps",
+        service_mobile_text: "Cross-platform app development with Flutter for iOS and Android.",
         resume_education: "Education",
+        edu_insat_period: "Tunis, Tunisia — Engineering Program",
+        edu_insat_text: "Focus on Robotics, Embedded Systems, and System Integration. Long-term goal: advancing robotics and microsystem technologies.",
+        edu_bac_title: "Tunisian Baccalaureate — Mathematics",
+        edu_bac_grade: "Grade: 18.11/20 · German equivalent: ~1.0–1.2",
+        edu_bac_text: "SAT: 1480",
         resume_experience: "Experience",
-        resume_skills: "My skills",
-        job_creative_director: "Creative director",
-        job_art_director: "Art director",
-        job_web_designer: "Web designer",
-        // Portfolio
-        filter_all: "All",
-        filter_apps: "Applications",
-        filter_select: "Select category",
-        // Blog
-        blog_category_design: "Design",
-        blog_1_title: "Design conferences in 2022",
-        blog_1_text: "Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.",
-        blog_2_title: "Best fonts every designer",
-        blog_2_text: "Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.",
-        blog_3_title: "Design digest #80",
-        blog_3_text: "Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.",
-        blog_4_title: "UI interactions of the week",
-        blog_4_text: "Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.",
-        blog_5_title: "The forgotten art of spacing",
-        blog_5_text: "Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        blog_6_title: "Design digest #79",
-        blog_6_text: "Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.",
-        // Contact
+        job_csr_title: "Customer Service Representative",
+        job_csr_text: "Structured customer support in a KPI-driven corporate environment. Resolved service and technical inquiries via phone, email, and chat. Maintained high communication quality in English. Developed strong problem-solving and operational discipline.",
+        job_freelance_title: "Freelance Web Developer",
+        job_freelance_period: "Independent",
+        job_freelance_text: "Designed and deployed full web applications for clients. Managed the complete development lifecycle: design → implementation → deployment. Worked with frontend and backend technologies including PHP and Node.js. Strengthened client communication and technical requirement translation.",
+        job_prod_title: "Technical Production Assistant",
+        job_prod_text: "Assisted in laser cutting and production workflows. Worked with electrical wiring and mechanical assembly. Improved safety procedures and operational efficiency. Gained practical industrial production experience.",
+        resume_certs: "Certifications",
+        cert_b1_detail: "Certified German B1",
+        cert_b2_title: "Preparing for Deutsch B2",
+        cert_b2_detail: "Self-study · Summer 2025 – present",
+        resume_languages: "Languages",
+        lang_en_level: "Fluent",
+        resume_skills: "Technical Skills",
+        filter_all: "All", filter_apps: "Applications",
+        filter_embedded: "Embedded", filter_select: "Select category",
+        proj_cat_embedded: "Embedded", proj_cat_mobile: "Mobile", proj_cat_robotics: "Robotics",
+        proj_1_title: "WiFi-Controlled RC Vehicle",
+        proj_1_text: "Built a WiFi-controlled RC car with a custom Flutter app as the controller interface.",
+        proj_2_title: "AI-Based Accountability App",
+        proj_2_text: "Developed a Flutter productivity app powered by AI to help users track and improve habits.",
+        proj_3_title: "Robotics & Embedded System Projects",
+        proj_3_text: "A series of hardware integration projects combining robotics, sensors, and embedded control.",
+        vol_1_title: "Add your volunteer role here",
+        vol_1_org: "Organisation Name · Year",
+        vol_1_text: "Describe what you did, what you contributed, and what you learned.",
+        vol_2_title: "Add another role here",
+        vol_2_org: "Organisation Name · Year",
+        vol_2_text: "Another volunteer experience or community contribution you want to highlight.",
         contact_form_title: "Contact Form",
         contact_placeholder_name: "Full name",
         contact_placeholder_email: "Email address",
@@ -885,62 +793,62 @@
         contact_send: "Send Message",
       },
       de: {
-        // Nav
-        nav_about: "Über mich",
-        nav_resume: "Lebenslauf",
-        nav_portfolio: "Portfolio",
-        nav_blog: "Blog",
-        nav_contact: "Kontakt",
-        // Sidebar
-        job_title: "Webentwickler",
+        nav_about: "Über mich", nav_resume: "Lebenslauf", nav_portfolio: "Portfolio",
+        nav_projects: "Projekte", nav_volunteer: "Ehrenamt", nav_contact: "Kontakt",
+        job_title: "Ingenieurwesen",
         show_contacts: "Kontakte anzeigen",
-        contact_email: "E-Mail",
-        contact_phone: "Telefon",
-        contact_birthday: "Geburtstag",
-        contact_location: "Standort",
-        // About
-        about_p1: "Ich bin Creative Director und UI/UX-Designer aus Sydney, Australien, und arbeite in der Webentwicklung und im Printbereich. Ich verwandle gerne komplexe Probleme in einfache, schöne und intuitive Designs.",
-        about_p2: "Meine Aufgabe ist es, Ihre Website so zu gestalten, dass sie funktional und benutzerfreundlich, aber gleichzeitig ansprechend ist. Darüber hinaus verleihe ich Ihrem Produkt eine persönliche Note und sorge dafür, dass es auffällt und leicht zu bedienen ist. Mein Ziel ist es, Ihre Botschaft und Identität auf kreativste Weise zu vermitteln.",
+        contact_email: "E-Mail", contact_phone: "Telefon",
+        contact_birthday: "Geburtstag", contact_location: "Standort",
+        about_p1: "Schwerpunkt Robotik, mit einem Hintergrund in Ingenieurwesen und einer soliden Grundlage in Embedded Systems, mechanischer Integration und praktischer technischer Umsetzung. Ich arbeite effektiv in komplexen Umgebungen, in denen Hardware, Software und Problemlösung zusammentreffen.",
+        about_p2: "Mein langfristiges Ziel liegt in der fortgeschrittenen Robotikforschung, insbesondere an der Schnittstelle zwischen intelligenten Systemen und aufkommenden Mikrosystemtechnologien. Ich werde von Neugier, systemischem Denken und der Herausforderung angetrieben, Maschinen zu bauen, die sinnvoll mit der physischen Welt interagieren.",
+        about_p3: "Kurzfristig möchte ich meine Kenntnisse in Mechatronik, Embedded Control und industrieller Systemintegration vertiefen — und dabei zur technisch anspruchsvollen Weiterentwicklung beitragen.",
+        intl_label: "Internationale Einsatzbereitschaft:",
+        intl_text: " Offen für internationale Möglichkeiten und langfristige berufliche Entwicklung in technischen Bereichen im Ausland.",
         service_title: "Was ich tue",
-        service_webdesign_title: "Webdesign",
-        service_webdesign_text: "Das modernste und hochwertigste Design auf professionellem Niveau.",
+        service_embedded_title: "Embedded Systems",
+        service_embedded_text: "Hardware-Software-Integration, Mikrocontroller und Echtzeit-Steuerungssysteme.",
+        service_robotics_title: "Robotik & Mechatronik",
+        service_robotics_text: "Systemdesign, mechanische Montage und intelligente Steuerungsintegration.",
         service_webdev_title: "Webentwicklung",
-        service_webdev_text: "Hochwertige Entwicklung von Websites auf professionellem Niveau.",
-        service_apps_title: "Mobile Apps",
-        service_apps_text: "Professionelle Entwicklung von Anwendungen für iOS und Android.",
-        service_photo_title: "Fotografie",
-        service_photo_text: "Ich erstelle hochwertige Fotos jeder Kategorie auf professionellem Niveau.",
-        // Testimonials
-        testimonials_title: "Referenzen",
-        testimonial_text: "Richard wurde beauftragt, eine Corporate Identity zu erstellen. Wir waren sehr zufrieden mit der geleisteten Arbeit. Sie hat viel Erfahrung und kümmert sich sehr um die Bedürfnisse des Kunden. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.",
-        // Clients
-        clients_title: "Kunden",
-        // Resume
+        service_webdev_text: "Full-Stack-Webanwendungen von der Konzeption bis zum Deployment.",
+        service_mobile_title: "Mobile Apps",
+        service_mobile_text: "Plattformübergreifende App-Entwicklung mit Flutter für iOS und Android.",
         resume_education: "Ausbildung",
+        edu_insat_period: "Tunis, Tunesien — Ingenieurstudium",
+        edu_insat_text: "Schwerpunkt Robotik, Embedded Systems und Systemintegration. Langfristiges Ziel: Weiterentwicklung von Robotik- und Mikrosystemtechnologien.",
+        edu_bac_title: "Tunisisches Abitur — Mathematik",
+        edu_bac_grade: "Note: 18,11/20 · Deutsches Äquivalent: ca. 1,0–1,2",
+        edu_bac_text: "SAT: 1480",
         resume_experience: "Berufserfahrung",
-        resume_skills: "Meine Fähigkeiten",
-        job_creative_director: "Kreativdirektor",
-        job_art_director: "Art Director",
-        job_web_designer: "Webdesigner",
-        // Portfolio
-        filter_all: "Alle",
-        filter_apps: "Anwendungen",
-        filter_select: "Kategorie wählen",
-        // Blog
-        blog_category_design: "Design",
-        blog_1_title: "Designkonferenzen 2022",
-        blog_1_text: "Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.",
-        blog_2_title: "Die besten Schriftarten für Designer",
-        blog_2_text: "Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.",
-        blog_3_title: "Design-Digest #80",
-        blog_3_text: "Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.",
-        blog_4_title: "UI-Interaktionen der Woche",
-        blog_4_text: "Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.",
-        blog_5_title: "Die vergessene Kunst des Abstands",
-        blog_5_text: "Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        blog_6_title: "Design-Digest #79",
-        blog_6_text: "Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.",
-        // Contact
+        job_csr_title: "Kundenbetreuer",
+        job_csr_text: "Strukturierter Kundensupport in einem KPI-orientierten Unternehmensumfeld. Bearbeitung von Service- und technischen Anfragen per Telefon, E-Mail und Chat. Hohe Kommunikationsqualität auf Englisch. Ausgeprägte Problemlösungskompetenz und Betriebsdisziplin.",
+        job_freelance_title: "Freelance Webentwickler",
+        job_freelance_period: "Selbstständig",
+        job_freelance_text: "Entwurf und Deployment vollständiger Webanwendungen für Kunden. Verwaltung des kompletten Entwicklungslebenszyklus: Design → Implementierung → Deployment. Arbeit mit Frontend- und Backend-Technologien einschließlich PHP und Node.js.",
+        job_prod_title: "Technischer Produktionsassistent",
+        job_prod_text: "Unterstützung bei Laserschneid- und Produktionsabläufen. Arbeit mit elektrischer Verkabelung und mechanischer Montage. Verbesserung von Sicherheitsverfahren und Betriebseffizienz.",
+        resume_certs: "Zertifikate",
+        cert_b1_detail: "Zertifiziertes Deutsch B1",
+        cert_b2_title: "Vorbereitung auf Deutsch B2",
+        cert_b2_detail: "Selbststudium · Sommer 2025 – heute",
+        resume_languages: "Sprachen",
+        lang_en_level: "Fließend",
+        resume_skills: "Technische Fähigkeiten",
+        filter_all: "Alle", filter_apps: "Anwendungen",
+        filter_embedded: "Embedded", filter_select: "Kategorie wählen",
+        proj_cat_embedded: "Embedded", proj_cat_mobile: "Mobil", proj_cat_robotics: "Robotik",
+        proj_1_title: "WLAN-gesteuertes RC-Fahrzeug",
+        proj_1_text: "Entwicklung eines WLAN-gesteuerten RC-Autos mit einer eigenen Flutter-App als Steuerungsschnittstelle.",
+        proj_2_title: "KI-basierte Accountability-App",
+        proj_2_text: "Entwicklung einer Flutter-Produktivitäts-App mit KI zur Verfolgung und Verbesserung von Gewohnheiten.",
+        proj_3_title: "Robotik- und Embedded-System-Projekte",
+        proj_3_text: "Eine Reihe von Hardware-Integrationsprojekten, die Robotik, Sensoren und Embedded-Steuerung kombinieren.",
+        vol_1_title: "Ehrenamtliche Tätigkeit hier eintragen",
+        vol_1_org: "Organisationsname · Jahr",
+        vol_1_text: "Beschreiben Sie, was Sie getan haben, was Sie beigetragen haben und was Sie gelernt haben.",
+        vol_2_title: "Weitere Tätigkeit hier eintragen",
+        vol_2_org: "Organisationsname · Jahr",
+        vol_2_text: "Eine weitere ehrenamtliche Erfahrung oder einen Gemeinschaftsbeitrag, den Sie hervorheben möchten.",
         contact_form_title: "Kontaktformular",
         contact_placeholder_name: "Vollständiger Name",
         contact_placeholder_email: "E-Mail-Adresse",
@@ -949,36 +857,21 @@
       }
     };
 
-    let currentLang = 'en';
-
     function setLang(lang) {
-      currentLang = lang;
       document.documentElement.lang = lang;
-
-      // Update active button state
       document.getElementById('btn-en').classList.toggle('active', lang === 'en');
       document.getElementById('btn-de').classList.toggle('active', lang === 'de');
-
       const t = translations[lang];
-
-      // Translate text content
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (t[key] !== undefined) {
-          el.textContent = t[key];
-        }
+        if (t[key] !== undefined) el.textContent = t[key];
       });
-
-      // Translate placeholders
       document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
-        if (t[key] !== undefined) {
-          el.placeholder = t[key];
-        }
+        if (t[key] !== undefined) el.placeholder = t[key];
       });
     }
   </script>
 
 </body>
-
 </html>
