@@ -1,332 +1,984 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ahmed Neji | Portfolio</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vCard - Personal Portfolio</title>
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: "Segoe UI", Arial, sans-serif;
-}
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-body{
-    background:#121018;
-    color:#e6e6e6;
-}
+  <style>
+    /* Language Switcher */
+    .lang-switcher {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: hsl(240, 2%, 12%);
+      border: 1px solid hsl(0, 0%, 22%);
+      border-radius: 8px;
+      padding: 4px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    }
 
-nav{
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    padding:20px 40px;
-    border-bottom:1px solid #1a1a1a;
-}
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: hsl(0, 0%, 60%);
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 0.5px;
+    }
 
-button{
-    background:none;
-    border:none;
-    color:#e6e6e6;
-    margin-right:20px;
-    font-size:1rem;
-    cursor:pointer;
-}
+    .lang-btn:hover {
+      color: hsl(0, 0%, 98%);
+    }
 
-button:hover{
-    color:#888;
-}
-
-section{
-    max-width:900px;
-    margin:80px auto;
-    padding:0 20px;
-    display:none;
-}
-
-section.active{
-    display:block;
-}
-
-h1{
-    font-weight:400;
-    margin-bottom:25px;
-}
-
-.project{
-    margin-bottom:60px;
-}
-
-.project img{
-    width:100%;
-    border-radius:8px;
-    margin-top:20px;
-}
-
-.contact-box{
-    line-height:2;
-}
-
-footer{
-    text-align:center;
-    padding:40px;
-    border-top:1px solid #1a1a1a;
-    color:#666;
-}
-</style>
+    .lang-btn.active {
+      background: hsl(0, 0%, 25%);
+      color: hsl(45, 100%, 72%);
+    }
+  </style>
 </head>
 
 <body>
 
-<nav>
-<div>
-<button onclick="show('overview')">Overview</button>
-<button onclick="show('career')">Career</button>
-<button onclick="show('projects')">Projects</button>
-<button onclick="show('volunteer')">Volunteer</button>
-<button onclick="show('contact')">Contact</button>
-</div>
+  <!-- Language Switcher -->
+  <div class="lang-switcher" aria-label="Language switcher">
+    <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" id="btn-de" onclick="setLang('de')">DE</button>
+  </div>
 
-<div>
-<button onclick="setLang('en')">EN</button>
-<button onclick="setLang('de')">DE</button>
-</div>
-</nav>
+  <main>
 
-<!-- OVERVIEW -->
-<section id="overview" class="active">
+    <aside class="sidebar" data-sidebar>
 
-<div style="display:flex; flex-wrap:wrap; align-items:center; gap:60px;">
+      <div class="sidebar-info">
 
-    <!-- PHOTO -->
-    <div style="flex:1; min-width:220px; text-align:center;">
-        <img src="profile.jpg" alt="Ahmed Neji"
-        style="width:220px; height:220px; object-fit:cover; border-radius:50%; border:2px solid #2a2535;">
+        <figure class="avatar-box">
+          <img src="./assets/images/my-avatar.png" alt="Richard hanrick" width="80">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Richard hanrick">Richard hanrick</h1>
+          <p class="title" data-i18n="job_title">Web developer</p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span data-i18n="show_contacts">Show Contacts</span>
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title" data-i18n="contact_email">Email</p>
+              <a href="mailto:richard@example.com" class="contact-link">richard@example.com</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title" data-i18n="contact_phone">Phone</p>
+              <a href="tel:+12133522795" class="contact-link">+1 (213) 352-2795</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title" data-i18n="contact_birthday">Birthday</p>
+              <time datetime="1982-06-23">June 23, 1982</time>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title" data-i18n="contact_location">Location</p>
+              <address>Sacramento, California, USA</address>
+            </div>
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+          <li class="social-item">
+            <a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a>
+          </li>
+          <li class="social-item">
+            <a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a>
+          </li>
+          <li class="social-item">
+            <a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a>
+          </li>
+        </ul>
+
+      </div>
+
+    </aside>
+
+    <div class="main-content">
+
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li class="navbar-item">
+            <button class="navbar-link active" data-nav-link data-i18n="nav_about">About</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link data-i18n="nav_resume">Resume</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link data-i18n="nav_portfolio">Portfolio</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link data-i18n="nav_blog">Blog</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link data-i18n="nav_contact">Contact</button>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- #ABOUT -->
+      <article class="about active" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title" data-i18n="nav_about">About me</h2>
+        </header>
+
+        <section class="about-text">
+          <p data-i18n="about_p1">
+            I'm Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print media.
+            I enjoy turning complex problems into simple, beautiful and intuitive designs.
+          </p>
+          <p data-i18n="about_p2">
+            My job is to build your website so that it is functional and user-friendly but at the same time attractive.
+            Moreover, I add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring
+            across your message and identity in the most creative way. I created web design for many famous brand companies.
+          </p>
+        </section>
+
+        <section class="service">
+
+          <h3 class="h3 service-title" data-i18n="service_title">What i'm doing</h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-design.svg" alt="design icon" width="40">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title" data-i18n="service_webdesign_title">Web design</h4>
+                <p class="service-item-text" data-i18n="service_webdesign_text">
+                  The most modern and high-quality design made at a professional level.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title" data-i18n="service_webdev_title">Web development</h4>
+                <p class="service-item-text" data-i18n="service_webdev_text">
+                  High-quality development of sites at the professional level.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title" data-i18n="service_apps_title">Mobile apps</h4>
+                <p class="service-item-text" data-i18n="service_apps_text">
+                  Professional development of applications for iOS and Android.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title" data-i18n="service_photo_title">Photography</h4>
+                <p class="service-item-text" data-i18n="service_photo_text">
+                  I make high-quality photos of any category at a professional level.
+                </p>
+              </div>
+            </li>
+
+          </ul>
+
+        </section>
+
+        <!-- testimonials -->
+        <section class="testimonials">
+
+          <h3 class="h3 testimonials-title" data-i18n="testimonials_title">Testimonials</h3>
+
+          <ul class="testimonials-list has-scrollbar">
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
+                </figure>
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel lewis</h4>
+                <div class="testimonials-text" data-testimonials-text>
+                  <p data-i18n="testimonial_text">
+                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                    lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
+                    consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar>
+                </figure>
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica miller</h4>
+                <div class="testimonials-text" data-testimonials-text>
+                  <p data-i18n="testimonial_text">
+                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                    lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
+                    consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-3.png" alt="Emily evans" width="60" data-testimonials-avatar>
+                </figure>
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Emily evans</h4>
+                <div class="testimonials-text" data-testimonials-text>
+                  <p data-i18n="testimonial_text">
+                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                    lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
+                    consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar>
+                </figure>
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry william</h4>
+                <div class="testimonials-text" data-testimonials-text>
+                  <p data-i18n="testimonial_text">
+                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                    lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
+                    consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+          </ul>
+
+        </section>
+
+        <!-- testimonials modal -->
+        <div class="modal-container" data-modal-container>
+
+          <div class="overlay" data-overlay></div>
+
+          <section class="testimonials-modal">
+
+            <button class="modal-close-btn" data-modal-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+            <div class="modal-img-wrapper">
+              <figure class="modal-avatar-box">
+                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
+              </figure>
+              <img src="./assets/images/icon-quote.svg" alt="quote icon">
+            </div>
+
+            <div class="modal-content">
+              <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
+              <time datetime="2021-06-14">14 June, 2021</time>
+              <div data-modal-text>
+                <p data-i18n="testimonial_text">
+                  Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                  lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
+                  consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                </p>
+              </div>
+            </div>
+
+          </section>
+
+        </div>
+
+        <!-- clients -->
+        <section class="clients">
+
+          <h3 class="h3 clients-title" data-i18n="clients_title">Clients</h3>
+
+          <ul class="clients-list has-scrollbar">
+            <li class="clients-item"><a href="#"><img src="./assets/images/logo-1-color.png" alt="client logo"></a></li>
+            <li class="clients-item"><a href="#"><img src="./assets/images/logo-2-color.png" alt="client logo"></a></li>
+            <li class="clients-item"><a href="#"><img src="./assets/images/logo-3-color.png" alt="client logo"></a></li>
+            <li class="clients-item"><a href="#"><img src="./assets/images/logo-4-color.png" alt="client logo"></a></li>
+            <li class="clients-item"><a href="#"><img src="./assets/images/logo-5-color.png" alt="client logo"></a></li>
+            <li class="clients-item"><a href="#"><img src="./assets/images/logo-6-color.png" alt="client logo"></a></li>
+          </ul>
+
+        </section>
+
+      </article>
+
+      <!-- #RESUME -->
+      <article class="resume" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title" data-i18n="nav_resume">Resume</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+            <h3 class="h3" data-i18n="resume_education">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">University school of the arts</h4>
+              <span>2007 — 2008</span>
+              <p class="timeline-text">
+                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
+                quas molestias exceptur.
+              </p>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">New york academy of art</h4>
+              <span>2006 — 2007</span>
+              <p class="timeline-text">
+                Ratione voluptatem sequi nesciunt, facere quisquams facere menda ossimus, omnis voluptas assumenda est omnis..
+              </p>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">High school of art and design</h4>
+              <span>2002 — 2004</span>
+              <p class="timeline-text">
+                Duis aute irure dolor in reprehenderit in voluptate, quila voluptas mag odit aut fugit, sed consequuntur
+                magni dolores eos.
+              </p>
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+            <h3 class="h3" data-i18n="resume_experience">Experience</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title" data-i18n="job_creative_director">Creative director</h4>
+              <span>2015 — Present</span>
+              <p class="timeline-text">
+                Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti, quos dolores et qvuas molestias exceptur.
+              </p>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title" data-i18n="job_art_director">Art director</h4>
+              <span>2013 — 2015</span>
+              <p class="timeline-text">
+                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et quas molestias exceptur.
+              </p>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title" data-i18n="job_web_designer">Web designer</h4>
+              <span>2010 — 2013</span>
+              <p class="timeline-text">
+                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et quas molestias exceptur.
+              </p>
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title" data-i18n="resume_skills">My skills</h3>
+
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Web design</h5>
+                <data value="80">80%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 80%;"></div>
+              </div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Graphic design</h5>
+                <data value="70">70%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 70%;"></div>
+              </div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Branding</h5>
+                <data value="90">90%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">WordPress</h5>
+                <data value="50">50%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 50%;"></div>
+              </div>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+      <!-- #PORTFOLIO -->
+      <article class="portfolio" data-page="portfolio">
+
+        <header>
+          <h2 class="h2 article-title" data-i18n="nav_portfolio">Portfolio</h2>
+        </header>
+
+        <section class="projects">
+
+          <ul class="filter-list">
+            <li class="filter-item"><button class="active" data-filter-btn data-i18n="filter_all">All</button></li>
+            <li class="filter-item"><button data-filter-btn data-i18n="service_webdesign_title">Web design</button></li>
+            <li class="filter-item"><button data-filter-btn data-i18n="filter_apps">Applications</button></li>
+            <li class="filter-item"><button data-filter-btn data-i18n="service_webdev_title">Web development</button></li>
+          </ul>
+
+          <div class="filter-select-box">
+            <button class="filter-select" data-select>
+              <div class="select-value" data-selecct-value data-i18n="filter_select">Select category</div>
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+            </button>
+            <ul class="select-list">
+              <li class="select-item"><button data-select-item data-i18n="filter_all">All</button></li>
+              <li class="select-item"><button data-select-item data-i18n="service_webdesign_title">Web design</button></li>
+              <li class="select-item"><button data-select-item data-i18n="filter_apps">Applications</button></li>
+              <li class="select-item"><button data-select-item data-i18n="service_webdev_title">Web development</button></li>
+            </ul>
+          </div>
+
+          <ul class="project-list">
+
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
+                </figure>
+                <h3 class="project-title">Finance</h3>
+                <p class="project-category" data-i18n="service_webdev_title">Web development</p>
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="./assets/images/project-2.png" alt="orizon" loading="lazy">
+                </figure>
+                <h3 class="project-title">Orizon</h3>
+                <p class="project-category" data-i18n="service_webdev_title">Web development</p>
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="web design">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
+                </figure>
+                <h3 class="project-title">Fundo</h3>
+                <p class="project-category" data-i18n="service_webdesign_title">Web design</p>
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="applications">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="./assets/images/project-4.png" alt="brawlhalla" loading="lazy">
+                </figure>
+                <h3 class="project-title">Brawlhalla</h3>
+                <p class="project-category" data-i18n="filter_apps">Applications</p>
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="web design">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="./assets/images/project-5.png" alt="dsm." loading="lazy">
+                </figure>
+                <h3 class="project-title">DSM.</h3>
+                <p class="project-category" data-i18n="service_webdesign_title">Web design</p>
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="web design">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="./assets/images/project-6.png" alt="metaspark" loading="lazy">
+                </figure>
+                <h3 class="project-title">MetaSpark</h3>
+                <p class="project-category" data-i18n="service_webdesign_title">Web design</p>
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="./assets/images/project-7.png" alt="summary" loading="lazy">
+                </figure>
+                <h3 class="project-title">Summary</h3>
+                <p class="project-category" data-i18n="service_webdev_title">Web development</p>
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="applications">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
+                </figure>
+                <h3 class="project-title">Task Manager</h3>
+                <p class="project-category" data-i18n="filter_apps">Applications</p>
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="web development">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                  <img src="./assets/images/project-9.png" alt="arrival" loading="lazy">
+                </figure>
+                <h3 class="project-title">Arrival</h3>
+                <p class="project-category" data-i18n="service_webdev_title">Web development</p>
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+      <!-- #BLOG -->
+      <article class="blog" data-page="blog">
+
+        <header>
+          <h2 class="h2 article-title" data-i18n="nav_blog">Blog</h2>
+        </header>
+
+        <section class="blog-posts">
+          <ul class="blog-posts-list">
+
+            <li class="blog-post-item">
+              <a href="#">
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy">
+                </figure>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category" data-i18n="blog_category_design">Design</p>
+                    <span class="dot"></span>
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+                  <h3 class="h3 blog-item-title" data-i18n="blog_1_title">Design conferences in 2022</h3>
+                  <p class="blog-text" data-i18n="blog_1_text">Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.</p>
+                </div>
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-2.jpg" alt="Best fonts every designer" loading="lazy">
+                </figure>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category" data-i18n="blog_category_design">Design</p>
+                    <span class="dot"></span>
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+                  <h3 class="h3 blog-item-title" data-i18n="blog_2_title">Best fonts every designer</h3>
+                  <p class="blog-text" data-i18n="blog_2_text">Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.</p>
+                </div>
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-3.jpg" alt="Design digest #80" loading="lazy">
+                </figure>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category" data-i18n="blog_category_design">Design</p>
+                    <span class="dot"></span>
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+                  <h3 class="h3 blog-item-title" data-i18n="blog_3_title">Design digest #80</h3>
+                  <p class="blog-text" data-i18n="blog_3_text">Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.</p>
+                </div>
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-4.jpg" alt="UI interactions of the week" loading="lazy">
+                </figure>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category" data-i18n="blog_category_design">Design</p>
+                    <span class="dot"></span>
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+                  <h3 class="h3 blog-item-title" data-i18n="blog_4_title">UI interactions of the week</h3>
+                  <p class="blog-text" data-i18n="blog_4_text">Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.</p>
+                </div>
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-5.jpg" alt="The forgotten art of spacing" loading="lazy">
+                </figure>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category" data-i18n="blog_category_design">Design</p>
+                    <span class="dot"></span>
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+                  <h3 class="h3 blog-item-title" data-i18n="blog_5_title">The forgotten art of spacing</h3>
+                  <p class="blog-text" data-i18n="blog_5_text">Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/blog-6.jpg" alt="Design digest #79" loading="lazy">
+                </figure>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category" data-i18n="blog_category_design">Design</p>
+                    <span class="dot"></span>
+                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                  </div>
+                  <h3 class="h3 blog-item-title" data-i18n="blog_6_title">Design digest #79</h3>
+                  <p class="blog-text" data-i18n="blog_6_text">Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.</p>
+                </div>
+              </a>
+            </li>
+
+          </ul>
+        </section>
+
+      </article>
+
+      <!-- #CONTACT -->
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title" data-i18n="nav_contact">Contact</h2>
+        </header>
+
+        <section class="mapbox" data-mapbox>
+          <figure>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199666.5651251294!2d-121.58334177520186!3d38.56165006739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ac672b28397f9%3A0x921f6aaa74197fdb!2sSacramento%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
+              width="400" height="300" loading="lazy"></iframe>
+          </figure>
+        </section>
+
+        <section class="contact-form">
+
+          <h3 class="h3 form-title" data-i18n="contact_form_title">Contact Form</h3>
+
+          <form action="#" class="form" data-form>
+
+            <div class="input-wrapper">
+              <input type="text" name="fullname" class="form-input" data-i18n-placeholder="contact_placeholder_name" placeholder="Full name" required data-form-input>
+              <input type="email" name="email" class="form-input" data-i18n-placeholder="contact_placeholder_email" placeholder="Email address" required data-form-input>
+            </div>
+
+            <textarea name="message" class="form-input" data-i18n-placeholder="contact_placeholder_message" placeholder="Your Message" required data-form-input></textarea>
+
+            <button class="form-btn" type="submit" disabled data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span data-i18n="contact_send">Send Message</span>
+            </button>
+
+          </form>
+
+        </section>
+
+      </article>
+
     </div>
 
-    <!-- NAME + INTRO -->
-    <div style="flex:2; min-width:300px;">
-        <h1 style="font-size:3rem; font-weight:400; margin-bottom:15px;">
-            Ahmed Neji
-        </h1>
+  </main>
 
-        <h3 style="font-weight:300; color:#a59fc0; margin-bottom:25px;"
-        data-en="Engineering Student · Robotics & Embedded Systems"
-        data-de="Ingenieurstudent · Robotik & Embedded Systeme">
-        Engineering Student · Robotics & Embedded Systems
-        </h3>
+  <script src="./assets/js/script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-        <p style="max-width:600px;"
-        data-en="Robotics-focused engineering student with a strong foundation in embedded systems, mechanical integration, and hands-on technical execution. I thrive in complex environments where hardware, software, and problem-solving intersect."
-        data-de="Robotik-orientierter Ingenieurstudent mit solider Grundlage in Embedded-Systemen, mechanischer Integration und praxisnaher technischer Umsetzung. Ich arbeite besonders gerne an komplexen Systemen, in denen Hardware, Software und Problemlösung zusammenkommen.">
-        Robotics-focused engineering student with a strong foundation in embedded systems, mechanical integration, and hands-on technical execution. I thrive in complex environments where hardware, software, and problem-solving intersect.
-        </p>
-    </div>
+  <!-- i18n Translation Script -->
+  <script>
+    const translations = {
+      en: {
+        // Nav
+        nav_about: "About",
+        nav_resume: "Resume",
+        nav_portfolio: "Portfolio",
+        nav_blog: "Blog",
+        nav_contact: "Contact",
+        // Sidebar
+        job_title: "Web developer",
+        show_contacts: "Show Contacts",
+        contact_email: "Email",
+        contact_phone: "Phone",
+        contact_birthday: "Birthday",
+        contact_location: "Location",
+        // About
+        about_p1: "I'm Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print media. I enjoy turning complex problems into simple, beautiful and intuitive designs.",
+        about_p2: "My job is to build your website so that it is functional and user-friendly but at the same time attractive. Moreover, I add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring across your message and identity in the most creative way. I created web design for many famous brand companies.",
+        service_title: "What i'm doing",
+        service_webdesign_title: "Web design",
+        service_webdesign_text: "The most modern and high-quality design made at a professional level.",
+        service_webdev_title: "Web development",
+        service_webdev_text: "High-quality development of sites at the professional level.",
+        service_apps_title: "Mobile apps",
+        service_apps_text: "Professional development of applications for iOS and Android.",
+        service_photo_title: "Photography",
+        service_photo_text: "I make high-quality photos of any category at a professional level.",
+        // Testimonials
+        testimonials_title: "Testimonials",
+        testimonial_text: "Richard was hired to create a corporate identity. We were very pleased with the work done. She has a lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.",
+        // Clients
+        clients_title: "Clients",
+        // Resume
+        resume_education: "Education",
+        resume_experience: "Experience",
+        resume_skills: "My skills",
+        job_creative_director: "Creative director",
+        job_art_director: "Art director",
+        job_web_designer: "Web designer",
+        // Portfolio
+        filter_all: "All",
+        filter_apps: "Applications",
+        filter_select: "Select category",
+        // Blog
+        blog_category_design: "Design",
+        blog_1_title: "Design conferences in 2022",
+        blog_1_text: "Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.",
+        blog_2_title: "Best fonts every designer",
+        blog_2_text: "Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.",
+        blog_3_title: "Design digest #80",
+        blog_3_text: "Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.",
+        blog_4_title: "UI interactions of the week",
+        blog_4_text: "Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.",
+        blog_5_title: "The forgotten art of spacing",
+        blog_5_text: "Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        blog_6_title: "Design digest #79",
+        blog_6_text: "Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.",
+        // Contact
+        contact_form_title: "Contact Form",
+        contact_placeholder_name: "Full name",
+        contact_placeholder_email: "Email address",
+        contact_placeholder_message: "Your Message",
+        contact_send: "Send Message",
+      },
+      de: {
+        // Nav
+        nav_about: "Über mich",
+        nav_resume: "Lebenslauf",
+        nav_portfolio: "Portfolio",
+        nav_blog: "Blog",
+        nav_contact: "Kontakt",
+        // Sidebar
+        job_title: "Webentwickler",
+        show_contacts: "Kontakte anzeigen",
+        contact_email: "E-Mail",
+        contact_phone: "Telefon",
+        contact_birthday: "Geburtstag",
+        contact_location: "Standort",
+        // About
+        about_p1: "Ich bin Creative Director und UI/UX-Designer aus Sydney, Australien, und arbeite in der Webentwicklung und im Printbereich. Ich verwandle gerne komplexe Probleme in einfache, schöne und intuitive Designs.",
+        about_p2: "Meine Aufgabe ist es, Ihre Website so zu gestalten, dass sie funktional und benutzerfreundlich, aber gleichzeitig ansprechend ist. Darüber hinaus verleihe ich Ihrem Produkt eine persönliche Note und sorge dafür, dass es auffällt und leicht zu bedienen ist. Mein Ziel ist es, Ihre Botschaft und Identität auf kreativste Weise zu vermitteln.",
+        service_title: "Was ich tue",
+        service_webdesign_title: "Webdesign",
+        service_webdesign_text: "Das modernste und hochwertigste Design auf professionellem Niveau.",
+        service_webdev_title: "Webentwicklung",
+        service_webdev_text: "Hochwertige Entwicklung von Websites auf professionellem Niveau.",
+        service_apps_title: "Mobile Apps",
+        service_apps_text: "Professionelle Entwicklung von Anwendungen für iOS und Android.",
+        service_photo_title: "Fotografie",
+        service_photo_text: "Ich erstelle hochwertige Fotos jeder Kategorie auf professionellem Niveau.",
+        // Testimonials
+        testimonials_title: "Referenzen",
+        testimonial_text: "Richard wurde beauftragt, eine Corporate Identity zu erstellen. Wir waren sehr zufrieden mit der geleisteten Arbeit. Sie hat viel Erfahrung und kümmert sich sehr um die Bedürfnisse des Kunden. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.",
+        // Clients
+        clients_title: "Kunden",
+        // Resume
+        resume_education: "Ausbildung",
+        resume_experience: "Berufserfahrung",
+        resume_skills: "Meine Fähigkeiten",
+        job_creative_director: "Kreativdirektor",
+        job_art_director: "Art Director",
+        job_web_designer: "Webdesigner",
+        // Portfolio
+        filter_all: "Alle",
+        filter_apps: "Anwendungen",
+        filter_select: "Kategorie wählen",
+        // Blog
+        blog_category_design: "Design",
+        blog_1_title: "Designkonferenzen 2022",
+        blog_1_text: "Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.",
+        blog_2_title: "Die besten Schriftarten für Designer",
+        blog_2_text: "Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.",
+        blog_3_title: "Design-Digest #80",
+        blog_3_text: "Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.",
+        blog_4_title: "UI-Interaktionen der Woche",
+        blog_4_text: "Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.",
+        blog_5_title: "Die vergessene Kunst des Abstands",
+        blog_5_text: "Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        blog_6_title: "Design-Digest #79",
+        blog_6_text: "Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.",
+        // Contact
+        contact_form_title: "Kontaktformular",
+        contact_placeholder_name: "Vollständiger Name",
+        contact_placeholder_email: "E-Mail-Adresse",
+        contact_placeholder_message: "Ihre Nachricht",
+        contact_send: "Nachricht senden",
+      }
+    };
 
-</div>
+    let currentLang = 'en';
 
-<!-- VISION BLOCK -->
-<div style="margin-top:80px; max-width:800px;">
+    function setLang(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
 
-<h2 style="font-weight:400; margin-bottom:20px;"
-data-en="Vision & Aspirations"
-data-de="Vision & Ziele">
-Vision & Aspirations
-</h2>
+      // Update active button state
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-de').classList.toggle('active', lang === 'de');
 
-<p
-data-en="My long-term ambition lies in advanced robotics research, particularly in the intersection between intelligent systems and emerging micro-scale technologies. I am driven by curiosity, system-level thinking, and the challenge of building machines that interact meaningfully with the physical world."
-data-de="Langfristig strebe ich eine Tätigkeit im Bereich fortgeschrittener Robotikforschung an, insbesondere an der Schnittstelle zwischen intelligenten Systemen und neuartigen Mikrotechnologien. Mich motivieren Neugier, systemisches Denken und die Herausforderung, Maschinen zu entwickeln, die sinnvoll mit der realen Welt interagieren.">
-My long-term ambition lies in advanced robotics research, particularly in the intersection between intelligent systems and emerging micro-scale technologies. I am driven by curiosity, system-level thinking, and the challenge of building machines that interact meaningfully with the physical world.
-</p>
+      const t = translations[lang];
 
-<br>
+      // Translate text content
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) {
+          el.textContent = t[key];
+        }
+      });
 
-<p
-data-en="In the near term, I aim to deepen my expertise in mechatronics, embedded control, and industrial system integration — contributing to technically demanding environments while continuously expanding my engineering scope."
-data-de="Kurz- bis mittelfristig möchte ich meine Kompetenzen in Mechatronik, Embedded-Steuerung und industrieller Systemintegration weiter ausbauen — mit dem Ziel, in technisch anspruchsvollen Umgebungen Verantwortung zu übernehmen und meinen ingenieurwissenschaftlichen Horizont stetig zu erweitern.">
-In the near term, I aim to deepen my expertise in mechatronics, embedded control, and industrial system integration — contributing to technically demanding environments while continuously expanding my engineering scope.
-</p>
-
-</div>
-
-</section>
-
-<!-- CAREER -->
-<section id="career">
-
-<h1>Career & Experience</h1>
-
-<!-- EXPERIENCE -->
-
-<h2>Professional Experience</h2>
-
-<div style="margin-bottom:40px;">
-<h3>Customer Service Representative</h3>
-<p>Assist Digital — Booking.com Support</p>
-
-<ul>
-<li>Structured customer support in a KPI-driven corporate environment</li>
-<li>Resolved service and technical inquiries via phone, email, and chat</li>
-<li>Maintained high communication quality in English</li>
-<li>Developed strong problem solving and operational discipline</li>
-</ul>
-</div>
-
-<div style="margin-bottom:40px;">
-<h3>Freelance Web Developer</h3>
-
-<ul>
-<li>Designed and deployed full web applications for clients</li>
-<li>Managed complete development lifecycle: design → implementation → deployment</li>
-<li>Worked with frontend and backend technologies including PHP and Node.js</li>
-<li>Strengthened client communication and technical requirement translation</li>
-</ul>
-</div>
-
-<div style="margin-bottom:40px;">
-<h3>Technical Production Assistant</h3>
-<p>Tunis Neon — Part Time</p>
-
-<ul>
-<li>Assisted in laser cutting and production workflows</li>
-<li>Worked with electrical wiring and mechanical assembly</li>
-<li>Improved safety procedures and operational efficiency</li>
-<li>Gained practical industrial production experience</li>
-</ul>
-</div>
-
-<!-- ENGINEERING HIGHLIGHTS -->
-
-<h2>Technische Schwerpunkte</h2>
-
-<p>
-Schwerpunkt Robotik, Embedded Systeme und Systemintegration.
-Langfristiges Ziel: Weiterentwicklung von Robotik- und Mikrosystemtechnologien.
-</p>
-
-<ul>
-<li>Entwicklung eines WiFi-gesteuerten RC-Fahrzeugs mit Flutter Steuerungs-App</li>
-<li>Entwicklung einer KI-basierten Accountability-App mit Flutter</li>
-<li>Robotik- und Embedded-System Projekte mit praktischer Hardwareintegration</li>
-</ul>
-
-<!-- EDUCATION -->
-
-<h2>Education</h2>
-
-<p>
-Ingenieurstudium — National Institute of Applied Science and Technology (INSAT), Tunesien
-</p>
-
-<p>
-Tunisisches Abitur (Mathematik) — 18.11/20  
-Deutsches Äquivalent: ca. 1.0 – 1.2
-</p>
-
-<p>
-SAT: 1480
-</p>
-
-<!-- CERTIFICATIONS -->
-
-<h2>Certifications & Languages</h2>
-
-<ul>
-<li>telc Deutsch B1 Zertifikat</li>
-<li>Deutsch — Selbststudium (Sommer 2025 – heute)</li>
-<li>Vorbereitung auf B2 Prüfung</li>
-<li>English — Fluent</li>
-<li>Français — B2</li>
-</ul>
-
-<!-- INTERNATIONAL -->
-
-<h2>International</h2>
-
-<p>
-Internationale Einsatzbereitschaft und langfristige berufliche Entwicklung im technischen Bereich.
-</p>
-
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-<h1 data-en="Projects" data-de="Projekte">Projects</h1>
-
-<div class="project">
-<h3>NXP Autonomous Race Robot</h3>
-<p>Embedded C/C++ | OpenCV | Pixy Camera | Motor control</p>
-<img src="project1.jpg" alt="Project">
-</div>
-
-<div class="project">
-<h3>Hexapod Robot</h3>
-<p>18 servo mechanical walking robot | Arduino control | Custom gait algorithms</p>
-<img src="project2.jpg" alt="Project">
-</div>
-
-<div class="project">
-<h3>Omega Bot (Description coming)</h3>
-<p>AI / Automation prototype project</p>
-<img src="project3.jpg" alt="Project">
-</div>
-
-</section>
-
-<!-- VOLUNTEER -->
-<section id="volunteer">
-<h1 data-en="Volunteer Work" data-de="Ehrenamtliches Engagement">Volunteer Work</h1>
-
-<p>
-<b>IEEE Women in Engineering — General Secretary</b><br>
-Organization of events (Pink October, outreach programs).<br>
-Fundraising and community support initiatives.
-</p>
-
-<br>
-
-<p>
-Distribution of school supplies, food, and clothing to families in need.<br>
-Annual charity drives during Ramadan and outreach campaigns.
-</p>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-<h1 data-en="Contact" data-de="Kontakt">Contact</h1>
-
-<div class="contact-box">
-Ahmed Neji<br>
-📞 28 413 650<br>
-📧 ahmedneji1@outlook.com<br>
-🌍 Tunisia<br>
-</div>
-
-</section>
-
-<footer>
-© 2026 Ahmed Neji
-</footer>
-
-<script>
-let currentLang = "en";
-
-function show(id){
-document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
-document.getElementById(id).classList.add("active");
-}
-
-function setLang(lang){
-currentLang = lang;
-
-document.querySelectorAll("[data-en]").forEach(el=>{
-el.textContent = el.getAttribute("data-"+lang);
-});
-}
-</script>
+      // Translate placeholders
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (t[key] !== undefined) {
+          el.placeholder = t[key];
+        }
+      });
+    }
+  </script>
 
 </body>
+
 </html>
