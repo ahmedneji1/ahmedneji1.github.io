@@ -49,7 +49,7 @@
             <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
             <div class="contact-info">
               <p class="contact-title" data-i18n="contact_email">Email</p>
-              <a href="mailto:richard@example.com" class="contact-link">richard@example.com</a>
+              <a href="/cdn-cgi/l/email-protection#7b091218131a091f3b1e031a160b171e55181416" class="contact-link"><span class="__cf_email__" data-cfemail="81f3e8e2e9e0f3e5c1e4f9e0ecf1ede4afe2eeec">[email&#160;protected]</span></a>
             </div>
           </li>
 
@@ -277,9 +277,9 @@
         <section class="projects">
 
           <ul class="filter-list">
-            <li class="filter-item"><button class="active" data-filter-btn data-i18n="filter_all">All</button></li>
-            <li class="filter-item"><button data-filter-btn data-i18n="filter_webdev">Web development</button></li>
-            <li class="filter-item"><button data-filter-btn data-i18n="filter_apps">Applications</button></li>
+            <li class="filter-item"><button class="active" data-filter-btn data-filter-value="all" data-i18n="filter_all">All</button></li>
+            <li class="filter-item"><button data-filter-btn data-filter-value="web development" data-i18n="filter_webdev">Web development</button></li>
+            <li class="filter-item"><button data-filter-btn data-filter-value="applications" data-i18n="filter_apps">Applications</button></li>
           </ul>
 
           <div class="filter-select-box">
@@ -288,9 +288,9 @@
               <div class="select-icon"><ion-icon name="chevron-down"></ion-icon></div>
             </button>
             <ul class="select-list">
-              <li class="select-item"><button data-select-item data-i18n="filter_all">All</button></li>
-              <li class="select-item"><button data-select-item data-i18n="filter_webdev">Web development</button></li>
-              <li class="select-item"><button data-select-item data-i18n="filter_apps">Applications</button></li>
+              <li class="select-item"><button data-select-item data-filter-value="all" data-i18n="filter_all">All</button></li>
+              <li class="select-item"><button data-select-item data-filter-value="web development" data-i18n="filter_webdev">Web development</button></li>
+              <li class="select-item"><button data-select-item data-filter-value="applications" data-i18n="filter_apps">Applications</button></li>
             </ul>
           </div>
 
@@ -378,10 +378,10 @@
         <section class="projects">
 
           <ul class="filter-list">
-            <li class="filter-item"><button class="active" data-filter-btn data-i18n="filter_all">All</button></li>
-            <li class="filter-item"><button data-filter-btn data-i18n="proj_cat_embedded">Embedded</button></li>
-            <li class="filter-item"><button data-filter-btn data-i18n="proj_cat_mobile">Mobile</button></li>
-            <li class="filter-item"><button data-filter-btn data-i18n="proj_cat_robotics">Robotics</button></li>
+            <li class="filter-item"><button class="active" data-filter-btn data-filter-value="all" data-i18n="filter_all">All</button></li>
+            <li class="filter-item"><button data-filter-btn data-filter-value="embedded" data-i18n="proj_cat_embedded">Embedded</button></li>
+            <li class="filter-item"><button data-filter-btn data-filter-value="mobile" data-i18n="proj_cat_mobile">Mobile</button></li>
+            <li class="filter-item"><button data-filter-btn data-filter-value="robotics" data-i18n="proj_cat_robotics">Robotics</button></li>
           </ul>
 
           <div class="filter-select-box">
@@ -390,10 +390,10 @@
               <div class="select-icon"><ion-icon name="chevron-down"></ion-icon></div>
             </button>
             <ul class="select-list">
-              <li class="select-item"><button data-select-item data-i18n="filter_all">All</button></li>
-              <li class="select-item"><button data-select-item data-i18n="proj_cat_embedded">Embedded</button></li>
-              <li class="select-item"><button data-select-item data-i18n="proj_cat_mobile">Mobile</button></li>
-              <li class="select-item"><button data-select-item data-i18n="proj_cat_robotics">Robotics</button></li>
+              <li class="select-item"><button data-select-item data-filter-value="all" data-i18n="filter_all">All</button></li>
+              <li class="select-item"><button data-select-item data-filter-value="embedded" data-i18n="proj_cat_embedded">Embedded</button></li>
+              <li class="select-item"><button data-select-item data-filter-value="mobile" data-i18n="proj_cat_mobile">Mobile</button></li>
+              <li class="select-item"><button data-select-item data-filter-value="robotics" data-i18n="proj_cat_robotics">Robotics</button></li>
             </ul>
           </div>
 
@@ -501,7 +501,7 @@
 
   </main>
 
-  <script src="./assets/js/script.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="./assets/js/script.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
@@ -535,7 +535,7 @@
       document.querySelectorAll('[data-filter-btn]').forEach(btn => {
         btn.addEventListener('click', function () {
           const article = this.closest('article');
-          const val = this.textContent.trim().toLowerCase();
+          const val = this.dataset.filterValue || this.textContent.trim().toLowerCase();
 
           article.querySelectorAll('[data-filter-btn]').forEach(b => b.classList.remove('active'));
           this.classList.add('active');
@@ -553,7 +553,7 @@
       document.querySelectorAll('[data-select-item]').forEach(item => {
         item.addEventListener('click', function () {
           const article = this.closest('article');
-          const val = this.textContent.trim().toLowerCase();
+          const val = this.dataset.filterValue || this.textContent.trim().toLowerCase();
 
           const sv = article.querySelector('[data-selecct-value]');
           if (sv) sv.textContent = this.textContent.trim();
@@ -562,7 +562,7 @@
           if (sel) sel.classList.remove('active');
 
           article.querySelectorAll('[data-filter-btn]').forEach(b => {
-            b.classList.toggle('active', b.textContent.trim().toLowerCase() === val);
+            b.classList.toggle('active', (b.dataset.filterValue || b.textContent.trim().toLowerCase()) === val);
           });
 
           article.querySelectorAll('[data-filter-item]').forEach(item => {
@@ -707,13 +707,4 @@
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (t[key] !== undefined) el.textContent = t[key];
-      });
-      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-        const key = el.getAttribute('data-i18n-placeholder');
-        if (t[key] !== undefined) el.placeholder = t[key];
-      });
-    }
-  </script>
-
-</body>
-</html>
+      })
