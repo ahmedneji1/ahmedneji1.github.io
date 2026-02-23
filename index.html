@@ -12,193 +12,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    /* ── Redefine the template's yellow/gold tokens to pastel pink ── */
-    :root {
-      --orange-yellow-crayola: hsl(340, 80%, 80%) !important;
-      --vegas-gold:            hsl(340, 60%, 75%) !important;
-      --text-gradient-yellow:  linear-gradient(to right, hsl(340, 80%, 80%), hsl(310, 70%, 82%)) !important;
-      --bg-gradient-yellow-1:  linear-gradient(to bottom right, hsl(340, 80%, 80%) 0%, hsla(310, 80%, 78%, 0) 50%) !important;
-      --bg-gradient-yellow-2:  linear-gradient(135deg, hsla(340, 80%, 80%, 0.251) 0%, hsla(310, 70%, 78%, 0) 59.86%), hsl(240, 2%, 13%) !important;
-      /* Dark matte purple-black backgrounds */
-      --smoky-black:    hsl(270, 14%, 7%);
-      --eerie-black-1:  hsl(270, 10%, 12%);
-      --eerie-black-2:  hsl(270, 10%, 11%);
-      --onyx:           hsl(270, 8%, 16%);
-      --jet:            hsl(270, 8%, 20%);
-    }
-
-    /* ── Focus Areas (replaces service cards) ─────────────────── */
-    .focus-areas-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      list-style: none;
-      padding: 0;
-      margin-bottom: 35px;
-    }
-    .focus-area-item { display: flex; }
-    .focus-area-tag {
-      display: inline-block;
-      padding: 8px 18px;
-      background: hsla(340, 60%, 80%, 0.08);
-      border: 1px solid hsla(340, 60%, 80%, 0.25);
-      border-radius: 999px;
-      color: hsl(270, 5%, 85%);
-      font-size: 13px;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 400;
-      letter-spacing: 0.2px;
-      transition: background 0.2s, border-color 0.2s, color 0.2s;
-    }
-    .focus-area-tag:hover {
-      background: hsla(340, 60%, 80%, 0.18);
-      border-color: hsl(340, 80%, 80%);
-      color: hsl(340, 80%, 85%);
-    }
-
-    /* ── Force pastel pink over the template's hardcoded yellow/gold ── */
-    /* The original style.css uses hsl(45, 100%, 72%) for accent.
-       We override every place it appears with !important. */
-
-    .navbar-link.active,
-    .navbar-link:hover { color: hsl(340, 80%, 80%) !important; }
-
-    .icon-box ion-icon,
-    .contact-link:hover,
-    .social-link:hover ion-icon,
-    .project-item:hover .project-item-icon-box ion-icon,
-    .blog-category,
-    .timeline-item::before,
-    .filter-btn.active,
-    [data-filter-btn].active { color: hsl(340, 80%, 80%) !important; }
-
-    /* icon-box background tint (the template uses a yellow-tinted bg) */
-    .icon-box {
-      background: hsla(340, 60%, 80%, 0.12) !important;
-      color: hsl(340, 80%, 80%) !important;
-    }
-
-    /* active filter button background */
-    [data-filter-btn].active,
-    .filter-list button.active {
-      background: hsla(340, 60%, 80%, 0.15) !important;
-      color: hsl(340, 80%, 80%) !important;
-      border-color: hsl(340, 80%, 80%) !important;
-    }
-
-    /* form submit button */
-    .form-btn {
-      background: hsl(340, 80%,
-
-    /* ─── Language Switcher ───────────────────────────────────── */
-    .lang-switcher {
-      position: fixed;
-      top: 16px;
-      right: 16px;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 4px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    }
-    .lang-btn {
-      background: transparent;
-      border: none;
-      color: hsl(270, 5%, 60%);
-      font-family: 'Poppins', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      padding: 4px 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      letter-spacing: 0.5px;
-    }
-    .lang-btn:hover { color: hsl(270, 5%, 92%); }
-    .lang-btn.active {
-      background: hsl(270, 8%, 22%);
-      color: hsl(340, 80%, 80%);
-    }
-
-    /* ─── Skills: tag chips ──────────────────────────────────── */
-    .skills-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 20px;
-      list-style: none;
-      margin: 0;
-    }
-    .skills-tags li {
-      background: hsl(270, 10%, 20%);
-      border: 1px solid hsl(270, 8%, 22%);
-      color: hsl(270, 5%, 92%);
-      font-family: 'Poppins', sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      padding: 6px 14px;
-      border-radius: 20px;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .skills-tags li:hover {
-      border-color: hsl(340, 80%, 80%);
-      color: hsl(340, 80%, 80%);
-    }
-
-    /* ─── Volunteer section ──────────────────────────────────── */
-    .volunteer-list {
-      display: grid;
-      gap: 20px;
-      padding: 0;
-      list-style: none;
-    }
-    .volunteer-item {
-      border-radius: 14px;
-      padding: 24px;
-      border: 1px solid hsl(270, 8%, 22%);
-      background: hsl(270, 10%, 16%);
-    }
-    .volunteer-item h3 {
-      font-size: 16px;
-      font-weight: 600;
-      color: hsl(270, 5%, 92%);
-      margin-bottom: 4px;
-    }
-    .volunteer-item .vol-org {
-      display: block;
-      font-size: 13px;
-      color: hsl(340, 80%, 80%);
-      margin-bottom: 10px;
-      font-weight: 500;
-    }
-    .volunteer-item p {
-      font-size: 14px;
-      color: hsl(270, 5%, 60%);
-      line-height: 1.7;
-    }
-
-    /* ─── International note strip ──────────────────────────── */
-    .intl-note {
-      margin-top: 20px;
-      padding: 16px 20px;
-      background: hsl(270, 10%, 16%);
-      border-left: 3px solid hsl(340, 80%, 80%);
-      border-radius: 0 10px 10px 0;
-      font-size: 14px;
-      color: hsl(270, 5%, 60%);
-      line-height: 1.6;
-    }
-    .intl-note strong {
-      color: hsl(270, 5%, 92%);
-      font-weight: 500;
-    }
-  </style>
 </head>
 
 <body>
@@ -213,6 +26,7 @@
 
     <!-- SIDEBAR -->
     <aside class="sidebar" data-sidebar>
+
       <div class="sidebar-info">
         <figure class="avatar-box">
           <img src="./assets/images/my-avatar.png" alt="Ahmed Neji" width="80">
@@ -235,7 +49,7 @@
             <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
             <div class="contact-info">
               <p class="contact-title" data-i18n="contact_email">Email</p>
-              <a href="/cdn-cgi/l/email-protection#ccbea5afa4adbea88ca9b4ada1bca0a9e2afa3a1" class="contact-link"><span class="__cf_email__" data-cfemail="98eaf1fbf0f9eafcd8fde0f9f5e8f4fdb6fbf7f5">[email&#160;protected]</span></a>
+              <a href="mailto:richard@example.com" class="contact-link">richard@example.com</a>
             </div>
           </li>
 
@@ -277,9 +91,10 @@
           </li>
         </ul>
       </div>
+
     </aside>
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN -->
     <div class="main-content">
 
       <nav class="navbar">
@@ -313,15 +128,9 @@
         </header>
 
         <section class="about-text">
-          <p data-i18n="about_p1">
-            Robotics-focused with a background in engineering and a strong foundation in embedded systems, mechanical integration, and hands-on technical execution. I thrive in complex environments where hardware, software, and problem-solving intersect.
-          </p>
-          <p data-i18n="about_p2">
-            My long-term ambition lies in advanced robotics research, particularly at the intersection between intelligent systems and emerging micro-scale technologies. I am driven by curiosity, system-level thinking, and the challenge of building machines that interact meaningfully with the physical world.
-          </p>
-          <p data-i18n="about_p3">
-            In the near term, I aim to deepen my expertise in mechatronics, embedded control, and industrial system integration — contributing to technically demanding environments while continuously expanding my engineering scope.
-          </p>
+          <p data-i18n="about_p1">Robotics-focused with a background in engineering and a strong foundation in embedded systems, mechanical integration, and hands-on technical execution. I thrive in complex environments where hardware, software, and problem-solving intersect.</p>
+          <p data-i18n="about_p2">My long-term ambition lies in advanced robotics research, particularly at the intersection between intelligent systems and emerging micro-scale technologies. I am driven by curiosity, system-level thinking, and the challenge of building machines that interact meaningfully with the physical world.</p>
+          <p data-i18n="about_p3">In the near term, I aim to deepen my expertise in mechatronics, embedded control, and industrial system integration — contributing to technically demanding environments while continuously expanding my engineering scope.</p>
           <div class="intl-note">
             <strong data-i18n="intl_label">International Readiness:</strong>
             <span data-i18n="intl_text"> Open to international opportunities and long-term professional development in technical fields abroad.</span>
@@ -329,26 +138,14 @@
         </section>
 
         <section class="service">
-          <h3 class="h3 service-title" data-i18n="focus_title">Areas of Focus</h3>
+          <h3 class="h3 service-title" data-i18n="focus_title">Areas of Expertise</h3>
           <ul class="focus-areas-list">
-            <li class="focus-area-item">
-              <span class="focus-area-tag" data-i18n="focus_1">Robotics & Autonomous Systems</span>
-            </li>
-            <li class="focus-area-item">
-              <span class="focus-area-tag" data-i18n="focus_2">Embedded Systems & Microcontrollers</span>
-            </li>
-            <li class="focus-area-item">
-              <span class="focus-area-tag" data-i18n="focus_3">Mechatronics & Hardware Integration</span>
-            </li>
-            <li class="focus-area-item">
-              <span class="focus-area-tag" data-i18n="focus_4">Full-Stack Web Development</span>
-            </li>
-            <li class="focus-area-item">
-              <span class="focus-area-tag" data-i18n="focus_5">Mobile Apps (Flutter)</span>
-            </li>
-            <li class="focus-area-item">
-              <span class="focus-area-tag" data-i18n="focus_6">Industrial Production & Laser Systems</span>
-            </li>
+            <li class="focus-area-item"><span class="focus-area-tag" data-i18n="focus_1">Robotics & Autonomous Systems</span></li>
+            <li class="focus-area-item"><span class="focus-area-tag" data-i18n="focus_2">Embedded Systems & Microcontrollers</span></li>
+            <li class="focus-area-item"><span class="focus-area-tag" data-i18n="focus_3">Mechatronics & Hardware Integration</span></li>
+            <li class="focus-area-item"><span class="focus-area-tag" data-i18n="focus_4">Full-Stack Web Development</span></li>
+            <li class="focus-area-item"><span class="focus-area-tag" data-i18n="focus_5">Mobile Apps — Flutter</span></li>
+            <li class="focus-area-item"><span class="focus-area-tag" data-i18n="focus_6">Industrial Production & Laser Systems</span></li>
           </ul>
         </section>
 
@@ -372,9 +169,7 @@
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title">National Institute of Applied Science and Technology (INSAT)</h4>
               <span data-i18n="edu_insat_period">Tunis, Tunisia — Engineering Program</span>
-              <p class="timeline-text" data-i18n="edu_insat_text">
-                Focus on Robotics, Embedded Systems, and System Integration. Long-term goal: advancing robotics and microsystem technologies.
-              </p>
+              <p class="timeline-text" data-i18n="edu_insat_text">Focus on Robotics, Embedded Systems, and System Integration. Long-term goal: advancing robotics and microsystem technologies.</p>
             </li>
 
             <li class="timeline-item">
@@ -397,25 +192,19 @@
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title" data-i18n="job_csr_title">Customer Service Representative</h4>
               <span>Assist Digital — Booking.com Support</span>
-              <p class="timeline-text" data-i18n="job_csr_text">
-                Structured customer support in a KPI-driven corporate environment. Resolved service and technical inquiries via phone, email, and chat. Maintained high communication quality in English. Developed strong problem-solving and operational discipline.
-              </p>
+              <p class="timeline-text" data-i18n="job_csr_text">Structured customer support in a KPI-driven corporate environment. Resolved service and technical inquiries via phone, email, and chat. Maintained high communication quality in English. Developed strong problem-solving and operational discipline.</p>
             </li>
 
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title" data-i18n="job_freelance_title">Freelance Web Developer</h4>
               <span data-i18n="job_freelance_period">Independent</span>
-              <p class="timeline-text" data-i18n="job_freelance_text">
-                Designed and deployed full web applications for clients. Managed the complete development lifecycle: design → implementation → deployment. Worked with frontend and backend technologies including PHP and Node.js. Strengthened client communication and technical requirement translation.
-              </p>
+              <p class="timeline-text" data-i18n="job_freelance_text">Designed and deployed full web applications for clients. Managed the complete development lifecycle: design → implementation → deployment. Worked with frontend and backend technologies including PHP and Node.js. Strengthened client communication and technical requirement translation.</p>
             </li>
 
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title" data-i18n="job_prod_title">Technical Production Assistant</h4>
               <span>Tunis Neon — Part Time</span>
-              <p class="timeline-text" data-i18n="job_prod_text">
-                Assisted in laser cutting and production workflows. Worked with electrical wiring and mechanical assembly. Improved safety procedures and operational efficiency. Gained practical industrial production experience.
-              </p>
+              <p class="timeline-text" data-i18n="job_prod_text">Assisted in laser cutting and production workflows. Worked with electrical wiring and mechanical assembly. Improved safety procedures and operational efficiency. Gained practical industrial production experience.</p>
             </li>
 
           </ol>
@@ -464,26 +253,14 @@
         <!-- Skills -->
         <section class="skill">
           <h3 class="h3 skills-title" data-i18n="resume_skills">Technical Skills</h3>
-          <div class="content-card" style="padding: 4px;">
+          <div class="content-card" style="padding-top: 20px;">
             <ul class="skills-tags">
-              <li>C / C++</li>
-              <li>Python</li>
-              <li>Flutter / Dart</li>
-              <li>Node.js</li>
-              <li>PHP</li>
-              <li>HTML / CSS / JS</li>
-              <li>Arduino</li>
-              <li>Raspberry Pi</li>
-              <li>ROS (basics)</li>
-              <li>SolidWorks</li>
-              <li>Linux</li>
-              <li>Git</li>
-              <li>SQL</li>
-              <li>Firebase</li>
-              <li>REST APIs</li>
-              <li>Laser Cutting</li>
-              <li>PCB Basics</li>
-              <li>Embedded C</li>
+              <li>C / C++</li><li>Python</li><li>Flutter / Dart</li>
+              <li>Node.js</li><li>PHP</li><li>HTML / CSS / JS</li>
+              <li>Arduino</li><li>Raspberry Pi</li><li>ROS (basics)</li>
+              <li>SolidWorks</li><li>Linux</li><li>Git</li>
+              <li>SQL</li><li>Firebase</li><li>REST APIs</li>
+              <li>Laser Cutting</li><li>PCB Basics</li><li>Embedded C</li>
             </ul>
           </div>
         </section>
@@ -500,10 +277,9 @@
         <section class="projects">
 
           <ul class="filter-list">
-            <li class="filter-item"><button class="active" data-filter-btn data-filter-value="all" data-i18n="filter_all">All</button></li>
-            <li class="filter-item"><button data-filter-btn data-filter-value="web development" data-i18n="service_webdev_title">Web development</button></li>
-            <li class="filter-item"><button data-filter-btn data-filter-value="applications" data-i18n="filter_apps">Applications</button></li>
-            <li class="filter-item"><button data-filter-btn data-filter-value="embedded" data-i18n="filter_embedded">Embedded</button></li>
+            <li class="filter-item"><button class="active" data-filter-btn data-i18n="filter_all">All</button></li>
+            <li class="filter-item"><button data-filter-btn data-i18n="filter_webdev">Web development</button></li>
+            <li class="filter-item"><button data-filter-btn data-i18n="filter_apps">Applications</button></li>
           </ul>
 
           <div class="filter-select-box">
@@ -512,10 +288,9 @@
               <div class="select-icon"><ion-icon name="chevron-down"></ion-icon></div>
             </button>
             <ul class="select-list">
-              <li class="select-item"><button data-select-item data-filter-value="all" data-i18n="filter_all">All</button></li>
-              <li class="select-item"><button data-select-item data-filter-value="web development" data-i18n="service_webdev_title">Web development</button></li>
-              <li class="select-item"><button data-select-item data-filter-value="applications" data-i18n="filter_apps">Applications</button></li>
-              <li class="select-item"><button data-select-item data-filter-value="embedded" data-i18n="filter_embedded">Embedded</button></li>
+              <li class="select-item"><button data-select-item data-i18n="filter_all">All</button></li>
+              <li class="select-item"><button data-select-item data-i18n="filter_webdev">Web development</button></li>
+              <li class="select-item"><button data-select-item data-i18n="filter_apps">Applications</button></li>
             </ul>
           </div>
 
@@ -528,7 +303,7 @@
                   <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
                 </figure>
                 <h3 class="project-title">Finance</h3>
-                <p class="project-category" data-i18n="service_webdev_title">Web development</p>
+                <p class="project-category" data-i18n="filter_webdev">Web development</p>
               </a>
             </li>
 
@@ -539,7 +314,7 @@
                   <img src="./assets/images/project-2.png" alt="orizon" loading="lazy">
                 </figure>
                 <h3 class="project-title">Orizon</h3>
-                <p class="project-category" data-i18n="service_webdev_title">Web development</p>
+                <p class="project-category" data-i18n="filter_webdev">Web development</p>
               </a>
             </li>
 
@@ -561,7 +336,7 @@
                   <img src="./assets/images/project-7.png" alt="summary" loading="lazy">
                 </figure>
                 <h3 class="project-title">Summary</h3>
-                <p class="project-category" data-i18n="service_webdev_title">Web development</p>
+                <p class="project-category" data-i18n="filter_webdev">Web development</p>
               </a>
             </li>
 
@@ -583,7 +358,7 @@
                   <img src="./assets/images/project-9.png" alt="arrival" loading="lazy">
                 </figure>
                 <h3 class="project-title">Arrival</h3>
-                <p class="project-category" data-i18n="service_webdev_title">Web development</p>
+                <p class="project-category" data-i18n="filter_webdev">Web development</p>
               </a>
             </li>
 
@@ -593,8 +368,8 @@
 
       </article>
 
-      <!-- ═══ PROJECTS (formerly Blog) ═══ -->
-      <article class="blog" data-page="projects">
+      <!-- ═══ PROJECTS ═══ -->
+      <article class="portfolio" data-page="projects">
 
         <header>
           <h2 class="h2 article-title" data-i18n="nav_projects">Projects</h2>
@@ -603,10 +378,10 @@
         <section class="projects">
 
           <ul class="filter-list">
-            <li class="filter-item"><button class="active" data-filter-btn data-filter-value="all" data-i18n="filter_all">All</button></li>
-            <li class="filter-item"><button data-filter-btn data-filter-value="embedded" data-i18n="proj_cat_embedded">Embedded</button></li>
-            <li class="filter-item"><button data-filter-btn data-filter-value="mobile" data-i18n="proj_cat_mobile">Mobile</button></li>
-            <li class="filter-item"><button data-filter-btn data-filter-value="robotics" data-i18n="proj_cat_robotics">Robotics</button></li>
+            <li class="filter-item"><button class="active" data-filter-btn data-i18n="filter_all">All</button></li>
+            <li class="filter-item"><button data-filter-btn data-i18n="proj_cat_embedded">Embedded</button></li>
+            <li class="filter-item"><button data-filter-btn data-i18n="proj_cat_mobile">Mobile</button></li>
+            <li class="filter-item"><button data-filter-btn data-i18n="proj_cat_robotics">Robotics</button></li>
           </ul>
 
           <div class="filter-select-box">
@@ -615,10 +390,10 @@
               <div class="select-icon"><ion-icon name="chevron-down"></ion-icon></div>
             </button>
             <ul class="select-list">
-              <li class="select-item"><button data-select-item data-filter-value="all" data-i18n="filter_all">All</button></li>
-              <li class="select-item"><button data-select-item data-filter-value="embedded" data-i18n="proj_cat_embedded">Embedded</button></li>
-              <li class="select-item"><button data-select-item data-filter-value="mobile" data-i18n="proj_cat_mobile">Mobile</button></li>
-              <li class="select-item"><button data-select-item data-filter-value="robotics" data-i18n="proj_cat_robotics">Robotics</button></li>
+              <li class="select-item"><button data-select-item data-i18n="filter_all">All</button></li>
+              <li class="select-item"><button data-select-item data-i18n="proj_cat_embedded">Embedded</button></li>
+              <li class="select-item"><button data-select-item data-i18n="proj_cat_mobile">Mobile</button></li>
+              <li class="select-item"><button data-select-item data-i18n="proj_cat_robotics">Robotics</button></li>
             </ul>
           </div>
 
@@ -628,7 +403,7 @@
               <a href="#">
                 <figure class="project-img">
                   <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/blog-1.jpg" alt="WiFi RC Car" loading="lazy">
+                  <img src="./assets/images/project-1.jpg" alt="WiFi RC Car" loading="lazy">
                 </figure>
                 <h3 class="project-title" data-i18n="proj_1_title">WiFi-Controlled RC Vehicle</h3>
                 <p class="project-category" data-i18n="proj_cat_embedded">Embedded</p>
@@ -639,7 +414,7 @@
               <a href="#">
                 <figure class="project-img">
                   <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/blog-2.jpg" alt="AI Accountability App" loading="lazy">
+                  <img src="./assets/images/project-2.png" alt="AI App" loading="lazy">
                 </figure>
                 <h3 class="project-title" data-i18n="proj_2_title">AI-Based Accountability App</h3>
                 <p class="project-category" data-i18n="proj_cat_mobile">Mobile</p>
@@ -650,7 +425,7 @@
               <a href="#">
                 <figure class="project-img">
                   <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/blog-3.jpg" alt="Robotics Projects" loading="lazy">
+                  <img src="./assets/images/project-4.png" alt="Robotics" loading="lazy">
                 </figure>
                 <h3 class="project-title" data-i18n="proj_3_title">Robotics & Embedded System Projects</h3>
                 <p class="project-category" data-i18n="proj_cat_robotics">Robotics</p>
@@ -676,17 +451,13 @@
             <li class="volunteer-item">
               <h3 data-i18n="vol_1_title">Add your volunteer role here</h3>
               <span class="vol-org" data-i18n="vol_1_org">Organisation Name · Year</span>
-              <p data-i18n="vol_1_text">
-                Describe what you did, what you contributed, and what you learned. You can update this with your real volunteer experience.
-              </p>
+              <p data-i18n="vol_1_text">Describe what you did, what you contributed, and what you learned. You can update this with your real volunteer experience.</p>
             </li>
 
             <li class="volunteer-item">
               <h3 data-i18n="vol_2_title">Add another role here</h3>
               <span class="vol-org" data-i18n="vol_2_org">Organisation Name · Year</span>
-              <p data-i18n="vol_2_text">
-                Another volunteer experience or community contribution you want to highlight.
-              </p>
+              <p data-i18n="vol_2_text">Another volunteer experience or community contribution you want to highlight.</p>
             </li>
 
           </ul>
@@ -713,10 +484,10 @@
           <h3 class="h3 form-title" data-i18n="contact_form_title">Contact Form</h3>
           <form action="#" class="form" data-form>
             <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" data-i18n-placeholder="contact_placeholder_name" placeholder="Full name" required data-form-input>
-              <input type="email" name="email" class="form-input" data-i18n-placeholder="contact_placeholder_email" placeholder="Email address" required data-form-input>
+              <input type="text" name="fullname" class="form-input" placeholder="Full name" data-i18n-placeholder="contact_placeholder_name" required data-form-input>
+              <input type="email" name="email" class="form-input" placeholder="Email address" data-i18n-placeholder="contact_placeholder_email" required data-form-input>
             </div>
-            <textarea name="message" class="form-input" data-i18n-placeholder="contact_placeholder_message" placeholder="Your Message" required data-form-input></textarea>
+            <textarea name="message" class="form-input" placeholder="Your Message" data-i18n-placeholder="contact_placeholder_message" required data-form-input></textarea>
             <button class="form-btn" type="submit" disabled data-form-btn>
               <ion-icon name="paper-plane"></ion-icon>
               <span data-i18n="contact_send">Send Message</span>
@@ -730,22 +501,28 @@
 
   </main>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="./assets/js/script.js"></script>
+  <script src="./assets/js/script.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-  <!-- NAV + FILTER FIX -->
+  <!-- NAV: override original script's innerHTML match with data-page-target -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-
-      // ── 1. Nav routing via data-page-target (language-safe) ──
       const navLinks = document.querySelectorAll('[data-nav-link]');
       const articles = document.querySelectorAll('[data-page]');
 
+      // Remove original nav listeners by cloning each button
       navLinks.forEach(btn => {
+        const clone = btn.cloneNode(true);
+        btn.parentNode.replaceChild(clone, btn);
+      });
+
+      // Re-query after clone
+      const freshLinks = document.querySelectorAll('[data-nav-link]');
+      freshLinks.forEach(btn => {
         btn.addEventListener('click', () => {
           const target = btn.getAttribute('data-page-target');
-          navLinks.forEach(l => l.classList.remove('active'));
+          freshLinks.forEach(l => l.classList.remove('active'));
           btn.classList.add('active');
           articles.forEach(a => {
             a.classList.toggle('active', a.getAttribute('data-page') === target);
@@ -754,60 +531,50 @@
         });
       });
 
-      // ── 2. Filter tabs (Portfolio & Projects) ─────────────────
-      function applyFilter(selectedValue, article) {
-        article.querySelectorAll('[data-filter-item]').forEach(item => {
-          const cat = item.dataset.category.toLowerCase();
-          item.classList.toggle('active', selectedValue === 'all' || cat === selectedValue);
-        });
-      }
-
+      // Filter: works per-article so Portfolio and Projects are independent
       document.querySelectorAll('[data-filter-btn]').forEach(btn => {
         btn.addEventListener('click', function () {
           const article = this.closest('article');
-          // Use data-filter-value if present, else fall back to text
-          const val = (this.dataset.filterValue || this.textContent.trim()).toLowerCase();
+          const val = this.textContent.trim().toLowerCase();
 
-          // Activate this btn, deactivate siblings in same article
           article.querySelectorAll('[data-filter-btn]').forEach(b => b.classList.remove('active'));
           this.classList.add('active');
 
-          // Update dropdown label
           const sv = article.querySelector('[data-selecct-value]');
           if (sv) sv.textContent = this.textContent.trim();
 
-          applyFilter(val, article);
+          article.querySelectorAll('[data-filter-item]').forEach(item => {
+            const cat = item.dataset.category.toLowerCase();
+            item.classList.toggle('active', val === 'all' || cat === val);
+          });
         });
       });
 
-      // Dropdown select items
       document.querySelectorAll('[data-select-item]').forEach(item => {
         item.addEventListener('click', function () {
           const article = this.closest('article');
-          const val = (this.dataset.filterValue || this.textContent.trim()).toLowerCase();
+          const val = this.textContent.trim().toLowerCase();
 
           const sv = article.querySelector('[data-selecct-value]');
           if (sv) sv.textContent = this.textContent.trim();
 
-          const select = article.querySelector('[data-select]');
-          if (select) select.classList.remove('active');
+          const sel = article.querySelector('[data-select]');
+          if (sel) sel.classList.remove('active');
 
           article.querySelectorAll('[data-filter-btn]').forEach(b => {
-            const bVal = (b.dataset.filterValue || b.textContent.trim()).toLowerCase();
-            b.classList.toggle('active', bVal === val);
+            b.classList.toggle('active', b.textContent.trim().toLowerCase() === val);
           });
 
-          applyFilter(val, article);
+          article.querySelectorAll('[data-filter-item]').forEach(item => {
+            const cat = item.dataset.category.toLowerCase();
+            item.classList.toggle('active', val === 'all' || cat === val);
+          });
         });
       });
 
-      // Select dropdown open/close (override original which breaks with multiple selects)
       document.querySelectorAll('[data-select]').forEach(sel => {
-        sel.addEventListener('click', function() {
-          this.classList.toggle('active');
-        });
+        sel.addEventListener('click', function () { this.classList.toggle('active'); });
       });
-
     });
   </script>
 
@@ -826,14 +593,13 @@
         about_p3: "In the near term, I aim to deepen my expertise in mechatronics, embedded control, and industrial system integration — contributing to technically demanding environments while continuously expanding my engineering scope.",
         intl_label: "International Readiness:",
         intl_text: " Open to international opportunities and long-term professional development in technical fields abroad.",
-        focus_title: "Areas of Focus",
+        focus_title: "Areas of Expertise",
         focus_1: "Robotics & Autonomous Systems",
         focus_2: "Embedded Systems & Microcontrollers",
         focus_3: "Mechatronics & Hardware Integration",
         focus_4: "Full-Stack Web Development",
-        focus_5: "Mobile Apps (Flutter)",
+        focus_5: "Mobile Apps — Flutter",
         focus_6: "Industrial Production & Laser Systems",
-        service_webdev_title: "Web Development",
         resume_education: "Education",
         edu_insat_period: "Tunis, Tunisia — Engineering Program",
         edu_insat_text: "Focus on Robotics, Embedded Systems, and System Integration. Long-term goal: advancing robotics and microsystem technologies.",
@@ -855,15 +621,12 @@
         resume_languages: "Languages",
         lang_en_level: "Fluent",
         resume_skills: "Technical Skills",
-        filter_all: "All", filter_apps: "Applications",
-        filter_embedded: "Embedded", filter_select: "Select category",
+        filter_all: "All", filter_webdev: "Web development", filter_apps: "Applications",
+        filter_select: "Select category",
         proj_cat_embedded: "Embedded", proj_cat_mobile: "Mobile", proj_cat_robotics: "Robotics",
         proj_1_title: "WiFi-Controlled RC Vehicle",
-        proj_1_text: "Built a WiFi-controlled RC car with a custom Flutter app as the controller interface.",
         proj_2_title: "AI-Based Accountability App",
-        proj_2_text: "Developed a Flutter productivity app powered by AI to help users track and improve habits.",
         proj_3_title: "Robotics & Embedded System Projects",
-        proj_3_text: "A series of hardware integration projects combining robotics, sensors, and embedded control.",
         vol_1_title: "Add your volunteer role here",
         vol_1_org: "Organisation Name · Year",
         vol_1_text: "Describe what you did, what you contributed, and what you learned.",
@@ -888,14 +651,13 @@
         about_p3: "Kurzfristig möchte ich meine Kenntnisse in Mechatronik, Embedded Control und industrieller Systemintegration vertiefen — und dabei zur technisch anspruchsvollen Weiterentwicklung beitragen.",
         intl_label: "Internationale Einsatzbereitschaft:",
         intl_text: " Offen für internationale Möglichkeiten und langfristige berufliche Entwicklung in technischen Bereichen im Ausland.",
-        focus_title: "Schwerpunkte",
+        focus_title: "Fachgebiete",
         focus_1: "Robotik & Autonome Systeme",
         focus_2: "Embedded Systems & Mikrocontroller",
         focus_3: "Mechatronik & Hardwareintegration",
         focus_4: "Full-Stack-Webentwicklung",
-        focus_5: "Mobile Apps (Flutter)",
+        focus_5: "Mobile Apps — Flutter",
         focus_6: "Industrielle Produktion & Lasersysteme",
-        service_webdev_title: "Webentwicklung",
         resume_education: "Ausbildung",
         edu_insat_period: "Tunis, Tunesien — Ingenieurstudium",
         edu_insat_text: "Schwerpunkt Robotik, Embedded Systems und Systemintegration. Langfristiges Ziel: Weiterentwicklung von Robotik- und Mikrosystemtechnologien.",
@@ -917,15 +679,12 @@
         resume_languages: "Sprachen",
         lang_en_level: "Fließend",
         resume_skills: "Technische Fähigkeiten",
-        filter_all: "Alle", filter_apps: "Anwendungen",
-        filter_embedded: "Embedded", filter_select: "Kategorie wählen",
+        filter_all: "Alle", filter_webdev: "Webentwicklung", filter_apps: "Anwendungen",
+        filter_select: "Kategorie wählen",
         proj_cat_embedded: "Embedded", proj_cat_mobile: "Mobil", proj_cat_robotics: "Robotik",
         proj_1_title: "WLAN-gesteuertes RC-Fahrzeug",
-        proj_1_text: "Entwicklung eines WLAN-gesteuerten RC-Autos mit einer eigenen Flutter-App als Steuerungsschnittstelle.",
         proj_2_title: "KI-basierte Accountability-App",
-        proj_2_text: "Entwicklung einer Flutter-Produktivitäts-App mit KI zur Verfolgung und Verbesserung von Gewohnheiten.",
         proj_3_title: "Robotik- und Embedded-System-Projekte",
-        proj_3_text: "Eine Reihe von Hardware-Integrationsprojekten, die Robotik, Sensoren und Embedded-Steuerung kombinieren.",
         vol_1_title: "Ehrenamtliche Tätigkeit hier eintragen",
         vol_1_org: "Organisationsname · Jahr",
         vol_1_text: "Beschreiben Sie, was Sie getan haben, was Sie beigetragen haben und was Sie gelernt haben.",
@@ -948,4 +707,13 @@
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (t[key] !== undefined) el.textContent = t[key];
-      })
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (t[key] !== undefined) el.placeholder = t[key];
+      });
+    }
+  </script>
+
+</body>
+</html>
