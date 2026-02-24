@@ -403,8 +403,38 @@
 
   </main>
 
+  
+
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <!-- PROJECT MODAL -->
+    <div class="project-modal" id="projectModal">
+      <div class="project-modal-overlay" id="projectModalOverlay"></div>
+    
+      <div class="project-modal-content">
+    
+        <button class="project-modal-close" id="projectModalClose">×</button>
+    
+        <h2 id="modalTitle"></h2>
+        <p id="modalDescription"></p>
+    
+        <!-- Media Carousel -->
+        <div class="carousel">
+    
+          <button class="carousel-btn prev" id="carouselPrev">❮</button>
+    
+          <div class="carousel-media">
+            <img id="carouselImage" src="" alt="">
+            <video id="carouselVideo" controls style="display:none"></video>
+          </div>
+    
+          <button class="carousel-btn next" id="carouselNext">❯</button>
+    
+        </div>
+    
+      </div>
+    </div>
 
   <!-- NAV: override original script's innerHTML match with data-page-target -->
   <script>
