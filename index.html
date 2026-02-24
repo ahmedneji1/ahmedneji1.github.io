@@ -653,3 +653,114 @@
   });
 }
     </script>
+
+  <script>
+const projects = document.querySelectorAll(".project-item");
+
+const modal = document.getElementById("projectModal");
+const overlay = document.getElementById("projectModalOverlay");
+const closeBtn = document.getElementById("projectModalClose");
+
+const modalTitle = document.getElementById("modalTitle");
+const modalDesc = document.getElementById("modalDescription");
+
+const carouselImg = document.getElementById("carouselImage");
+const carouselVideo = document.getElementById("carouselVideo");
+
+let mediaIndex = 0;
+let currentMedia = [];
+
+/* PROJECT DATA */
+const projectData = {
+  omega: {
+    title: "Omega — WiFi RC Vehicle",
+    description: "Embedded WiFi-controlled robotic vehicle with real-time remote motion control.",
+    media: [
+      "./assets/videos/omega1.mp4",
+      "./assets/images/project-omega-1.jpg"
+    ]
+  },
+
+  nxp: {
+    title: "NXP Cup Autonomous Vehicle",
+    description: "Competition autonomous navigation using Pixy2 vision tracking.",
+    media: [
+      "./assets/videos/nxp1.mp4",
+      "./assets/images/nxp1.jpg"
+    ]
+  },
+
+  parker: {
+    title: "Parker — Hexapod Robot",
+    description: "18 servo hexapod locomotion experimentation platform.",
+    media: [
+      "./assets/videos/parker1.mp4",
+      "./assets/images/parker1.jpg"
+    ]
+  },
+
+  pallbearer: {
+    title: "Pallbearer — Platform Game",
+    description: "Ongoing Unity platformer development project.",
+    media: [
+      "./assets/videos/pallbearer.mp4"
+    ]
+  }
+};
+
+/* OPEN MODAL */
+projects.forEach(project => {
+  project.addEventListener("click", () => {
+
+    const key = project.querySelector(".project-title").dataset.projectKey;
+    const data = projectData[key];
+
+    if (!data) return;
+
+    modalTitle.textContent = data.title;
+    modalDesc.textContent = data.description;
+
+    currentMedia = data.media;
+    mediaIndex = 0;
+
+    updateMedia();
+
+    modal.classList.add("active");
+  });
+});
+
+/* CLOSE */
+[overlay, closeBtn].forEach(el => {
+  el.addEventListener("click", () => modal.classList.remove("active"));
+});
+
+/* CAROUSEL CONTROLS */
+document.getElementById("carouselNext").addEventListener("click", () => {
+  mediaIndex = (mediaIndex + 1) % currentMedia.length;
+  updateMedia();
+});
+
+document.getElementById("carouselPrev").addEventListener("click", () => {
+  mediaIndex = (mediaIndex - 1 + currentMedia.length) % currentMedia.length;
+  updateMedia();
+});
+
+function updateMedia(){
+  const file = currentMedia[mediaIndex];
+
+  if(!file) return;
+
+  if(file.endsWith(".mp4")){
+    carouselImg.style.display = "none";
+    carouselVideo.style.display = "block";
+
+    carouselVideo.src = file;
+    carouselVideo.load();
+
+  } else {
+    carouselVideo.style.display = "none";
+    carouselImg.style.display = "block";
+    carouselImg.src = file;
+  }
+}
+</script>
