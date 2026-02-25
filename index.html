@@ -147,6 +147,55 @@
       font-weight: 300; margin: 4px 10px 0;
       line-height: 1.5;
     }
+
+    /* carousel: full image, centered, no crop */
+    .car-track img {
+      min-width: 100%;
+      height: 260px;
+      object-fit: contain;
+      object-position: center;
+      background: #0d0d0d;
+      border-radius: 12px;
+      cursor: zoom-in;
+    }
+    .car-track video {
+      min-width: 100%;
+      height: 260px;
+      border-radius: 12px;
+      background: #0d0d0d;
+    }
+
+    /* lightbox */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: hsla(0,0%,0%,0.93);
+      z-index: 500;
+      justify-content: center;
+      align-items: center;
+      cursor: zoom-out;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img {
+      max-width: 92vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 0 80px hsla(0,0%,0%,0.8);
+      cursor: default;
+    }
+    #lightbox-close {
+      position: fixed;
+      top: 16px; right: 20px;
+      background: hsla(0,0%,20%,.85);
+      border: none; border-radius: 8px;
+      width: 36px; height: 36px;
+      color: #fff; font-size: 20px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #lightbox-close:hover { background: hsla(0,0%,35%,.9); }
   </style>
 </head>
 
@@ -156,6 +205,12 @@
   <div class="lang-switcher">
     <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
     <button class="lang-btn" id="btn-de" onclick="setLang('de')">DE</button>
+  </div>
+
+  <!-- ══ LIGHTBOX ══ -->
+  <div id="lightbox" onclick="closeLightbox()">
+    <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightbox-img" src="" alt="">
   </div>
 
   <!-- ══════════════════════════════
@@ -186,17 +241,14 @@
         </ul>
         <div class="proj-note" data-i18n="m1_note">Flagship project combining embedded networking, real-time motor control, and cross-platform mobile development into a single integrated system.</div>
         <div class="proj-media" style="position:relative; border-radius:12px; overflow:hidden;">
-
           <div class="car-track" style="display:flex; transition:transform 0.35s ease;">
-            <img src="./assets/images/omega-flutter-1.png" style="min-width:100%; height:220px; object-fit:cover; border-radius:12px;">
-            <img src="./assets/images/omega-flutter-2.png" style="min-width:100%; height:220px; object-fit:cover; border-radius:12px;">
-            <img src="./assets/images/omega-flutter-3.png" style="min-width:100%; height:220px; object-fit:cover; border-radius:12px;">
-            <img src="./assets/images/omega-flutter-4.png" style="min-width:100%; height:220px; object-fit:cover; border-radius:12px;">
+            <img src="./assets/images/omega-flutter-1.png" onclick="openLightbox(this.src)" alt="Omega Flutter 1">
+            <img src="./assets/images/omega-flutter-2.png" onclick="openLightbox(this.src)" alt="Omega Flutter 2">
+            <img src="./assets/images/omega-flutter-3.png" onclick="openLightbox(this.src)" alt="Omega Flutter 3">
+            <img src="./assets/images/omega-flutter-4.png" onclick="openLightbox(this.src)" alt="Omega Flutter 4">
           </div>
-        
-          <button onclick="carMove(this,-1)" style="position:absolute; top:0; bottom:0; left:8px; margin:auto; height:32px; width:32px; background:hsla(0,0%,0%,.55); color:#fff; border:none; border-radius:8px; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">‹</button>
-          <button onclick="carMove(this,1)"  style="position:absolute; top:0; bottom:0; right:8px; margin:auto; height:32px; width:32px; background:hsla(0,0%,0%,.55); color:#fff; border:none; border-radius:8px; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">›</button>
-        
+          <button onclick="carMove(this,-1)" style="position:absolute; top:0; bottom:0; left:8px; margin:auto; height:32px; width:32px; background:hsla(0,0%,0%,.55); color:#fff; border:none; border-radius:8px; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">&#8249;</button>
+          <button onclick="carMove(this,1)"  style="position:absolute; top:0; bottom:0; right:8px; margin:auto; height:32px; width:32px; background:hsla(0,0%,0%,.55); color:#fff; border:none; border-radius:8px; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">&#8250;</button>
         </div>
       </div>
     </div>
@@ -257,16 +309,13 @@
         </ul>
         <div class="proj-note" data-i18n="m3_note">Movement smoothness was limited due to microcontroller timing constraints and power distribution challenges. This engineering realism demonstrates applied problem diagnosis and iterative design thinking — not a flaw, a finding.</div>
         <div class="proj-media" style="position:relative; border-radius:12px; overflow:hidden;">
-
           <div class="car-track" style="display:flex; transition:transform 0.35s ease;">
-            <img src="./assets/images/Parker-1.jpeg" style="min-width:100%; height:220px; object-fit:cover; border-radius:12px;">
-            <video src="./assets/videos/parker-demo.mp4" controls style="min-width:100%; height:220px; border-radius:12px;"></video>
-            <img src="./assets/images/Parker-2.jpeg" style="min-width:100%; height:220px; object-fit:cover; border-radius:12px;">
+            <img src="./assets/images/Parker-1.jpeg" onclick="openLightbox(this.src)" alt="Parker 1">
+            <video src="./assets/videos/parker-demo.mp4" controls style="min-width:100%; height:260px; border-radius:12px; background:#0d0d0d;"></video>
+            <img src="./assets/images/Parker-2.jpeg" onclick="openLightbox(this.src)" alt="Parker 2">
           </div>
-        
-          <button onclick="carMove(this,-1)" style="position:absolute; top:0; bottom:0; left:8px; margin:auto; height:32px; width:32px; background:hsla(0,0%,0%,.55); color:#fff; border:none; border-radius:8px; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">‹</button>
-          <button onclick="carMove(this,1)"  style="position:absolute; top:0; bottom:0; right:8px; margin:auto; height:32px; width:32px; background:hsla(0,0%,0%,.55); color:#fff; border:none; border-radius:8px; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">›</button>
-        
+          <button onclick="carMove(this,-1)" style="position:absolute; top:0; bottom:0; left:8px; margin:auto; height:32px; width:32px; background:hsla(0,0%,0%,.55); color:#fff; border:none; border-radius:8px; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">&#8249;</button>
+          <button onclick="carMove(this,1)"  style="position:absolute; top:0; bottom:0; right:8px; margin:auto; height:32px; width:32px; background:hsla(0,0%,0%,.55); color:#fff; border:none; border-radius:8px; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">&#8250;</button>
         </div>
       </div>
     </div>
@@ -296,15 +345,12 @@
         </ul>
         <div class="proj-note" data-i18n="m4_note">Demonstrates full-stack mobile architecture: frontend design, cloud database integration, and AI API consumption within a production-structured Flutter application.</div>
         <div class="proj-media" style="position:relative; border-radius:12px; overflow:hidden;">
-
           <div class="car-track" style="display:flex; transition:transform 0.35s ease;">
-            <img src="./assets/images/study-flutter-1.png" style="min-width:100%; height:220px; object-fit:cover; border-radius:12px;">
-            <img src="./assets/images/study-flutter-2.png" style="min-width:100%; height:220px; object-fit:cover; border-radius:12px;">
+            <img src="./assets/images/study-flutter-1.png" onclick="openLightbox(this.src)" alt="AI App 1">
+            <img src="./assets/images/study-flutter-2.png" onclick="openLightbox(this.src)" alt="AI App 2">
           </div>
-        
-          <button onclick="carMove(this,-1)" style="position:absolute; top:0; bottom:0; left:8px; margin:auto; height:32px; width:32px; background:hsla(0,0%,0%,.55); color:#fff; border:none; border-radius:8px; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">‹</button>
-          <button onclick="carMove(this,1)"  style="position:absolute; top:0; bottom:0; right:8px; margin:auto; height:32px; width:32px; background:hsla(0,0%,0%,.55); color:#fff; border:none; border-radius:8px; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">›</button>
-        
+          <button onclick="carMove(this,-1)" style="position:absolute; top:0; bottom:0; left:8px; margin:auto; height:32px; width:32px; background:hsla(0,0%,0%,.55); color:#fff; border:none; border-radius:8px; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">&#8249;</button>
+          <button onclick="carMove(this,1)"  style="position:absolute; top:0; bottom:0; right:8px; margin:auto; height:32px; width:32px; background:hsla(0,0%,0%,.55); color:#fff; border:none; border-radius:8px; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">&#8250;</button>
         </div>
       </div>
     </div>
@@ -352,7 +398,7 @@
         </figure>
         <div class="info-content">
           <h1 class="name" title="Ahmed Neji">Ahmed Neji</h1>
-          <p class="title" data-i18n="job_title">Embedded Systems & Robotics Developer</p>
+          <p class="title" data-i18n="job_title">Background in Engineering</p>
         </div>
         <button class="info_more-btn" data-sidebar-btn>
           <span data-i18n="show_contacts">Show Contacts</span>
@@ -367,7 +413,7 @@
             <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
             <div class="contact-info">
               <p class="contact-title" data-i18n="contact_email">Email</p>
-              <a href=mailto:ahmedneji1@outlook.com" class="contact-link"><span class="__cf_email__" data-cfemail="3170595c54557f545b5800715e44455d5e5e5a1f525e5c">AhmedNeji1@outlook.com</span></a>
+              <a href="/cdn-cgi/l/email-protection#d9b8b1b4bcbdb7bcb3b0e899b6acadb5b6b6b2f7bab6b4" class="contact-link"><span class="__cf_email__" data-cfemail="3170595c54557f545b5800715e44455d5e5e5a1f525e5c">[email&#160;protected]</span></a>
             </div>
           </li>
           <li class="contact-item">
@@ -394,8 +440,9 @@
         </ul>
         <div class="separator"></div>
         <ul class="social-list">
-          <li class="social-item"><a href="https://github.com/ahmedneji1" class="social-link"><ion-icon name="logo-github"></ion-icon></a></li>
-          <li class="social-item"><a href="linkedin.com/in/ahmed-neji-3022723b3" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+          <li class="social-item"><a href="#" class="social-link"><ion-icon name="logo-github"></ion-icon></a></li>
+          <li class="social-item"><a href="#" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+          <li class="social-item"><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
         </ul>
       </div>
     </aside>
@@ -632,7 +679,7 @@
             <li class="project-item active" data-filter-item data-category="robotics" onclick="openModal('m-parker')">
               <figure class="project-img">
                 <div class="project-item-icon-box"><ion-icon name="expand-outline"></ion-icon></div>
-                <img src="./assets/images/Parker-1.jpeg" alt="Parker Hexapod" loading="lazy">
+                <img src="./assets/images/project-7.png" alt="Parker Hexapod" loading="lazy">
               </figure>
               <span class="card-badge cb-prototype" data-i18n="badge_prototype">🟡 Prototype</span>
               <h3 class="project-title" data-i18n="p3_title">Parker — 18-Servo Hexapod</h3>
@@ -727,18 +774,32 @@
     </div><!-- /main-content -->
   </main>
 
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="./assets/js/script.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
   <script>
-
+    /* ── MODAL OPEN / CLOSE ── */
     function carMove(btn, dir) {
       const track = btn.parentElement.querySelector('.car-track');
       const total = track.children.length;
       track._idx = ((track._idx || 0) + dir + total) % total;
       track.style.transform = `translateX(-${track._idx * 100}%)`;
     }
-    /* ── MODAL OPEN / CLOSE ── */
+
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
     function openModal(id) {
       document.getElementById(id).classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -826,7 +887,7 @@
       en: {
         nav_about:"About", nav_resume:"Resume", nav_projects:"Projects",
         nav_volunteer:"Volunteer", nav_contact:"Contact",
-        job_title:"Embedded Systems & Robotics Developer",
+        job_title:"Background in Engineering",
         show_contacts:"Show Contacts",
         contact_email:"Email", contact_phone:"Phone",
         contact_birthday:"Birthday", contact_location:"Location",
@@ -953,7 +1014,7 @@
       de: {
         nav_about:"Über mich", nav_resume:"Lebenslauf", nav_projects:"Projekte",
         nav_volunteer:"Ehrenamt", nav_contact:"Kontakt",
-        job_title:"Embedded Systems & Robotik – Entwicklung",
+        job_title:"Ingenieurwesen",
         show_contacts:"Kontakte anzeigen",
         contact_email:"E-Mail", contact_phone:"Telefon",
         contact_birthday:"Geburtstag", contact_location:"Standort",
