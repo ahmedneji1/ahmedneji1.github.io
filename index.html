@@ -247,9 +247,19 @@
           <li data-i18n="m3_d5">Lessons learned: Future iteration would use dedicated servo controller ICs (PCA9685) and distributed power rails for cleaner torque delivery</li>
         </ul>
         <div class="proj-note" data-i18n="m3_note">Movement smoothness was limited due to microcontroller timing constraints and power distribution challenges. This engineering realism demonstrates applied problem diagnosis and iterative design thinking — not a flaw, a finding.</div>
-        <div class="proj-media">
-          <video src="./assets/videos/parker-demo.mp4" controls style="width:100%; border-radius:12px; height:200px;"></video>
-          <img src="./assets/images/Parker-2.jpeg" alt="Parker mechanical assembly" style="width:100%; border-radius:12px; object-fit:cover; height:200px;">
+        <div class="proj-media" style="position:relative; overflow:hidden; border-radius:12px;">
+
+          <!-- slides -->
+          <div class="car-track" style="display:flex; transition:transform 0.35s ease;">
+            <img src="./assets/images/parker-1.jpg" style="min-width:100%; height:220px; object-fit:cover; border-radius:12px;">
+            <video src="./assets/videos/parker-demo.mov" controls style="min-width:100%; height:220px; border-radius:12px;"></video>
+            <img src="./assets/images/parker-2.jpg" style="min-width:100%; height:220px; object-fit:cover; border-radius:12px;">
+          </div>
+        
+          <!-- prev / next buttons -->
+          <button onclick="carMove(this,-1)" style="position:absolute;top:50%;left:8px;transform:translateY(-50%);background:hsla(0,0%,0%,.55);color:#fff;border:none;border-radius:8px;width:32px;height:32px;font-size:16px;cursor:pointer;">‹</button>
+          <button onclick="carMove(this,1)"  style="position:absolute;top:50%;right:8px;transform:translateY(-50%);background:hsla(0,0%,0%,.55);color:#fff;border:none;border-radius:8px;width:32px;height:32px;font-size:16px;cursor:pointer;">›</button>
+        
         </div>
       </div>
     </div>
@@ -707,6 +717,13 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
   <script>
+
+    function carMove(btn, dir) {
+      const track = btn.parentElement.querySelector('.car-track');
+      const total = track.children.length;
+      track._idx = ((track._idx || 0) + dir + total) % total;
+      track.style.transform = `translateX(-${track._idx * 100}%)`;
+    }
     /* ── MODAL OPEN / CLOSE ── */
     function openModal(id) {
       document.getElementById(id).classList.add('open');
