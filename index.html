@@ -247,18 +247,16 @@
           <li data-i18n="m3_d5">Lessons learned: Future iteration would use dedicated servo controller ICs (PCA9685) and distributed power rails for cleaner torque delivery</li>
         </ul>
         <div class="proj-note" data-i18n="m3_note">Movement smoothness was limited due to microcontroller timing constraints and power distribution challenges. This engineering realism demonstrates applied problem diagnosis and iterative design thinking — not a flaw, a finding.</div>
-        <div class="proj-media" style="position:relative; overflow:hidden; border-radius:12px;">
+        <div class="proj-media" style="position:relative; border-radius:12px; overflow:hidden;">
 
-          <!-- slides -->
           <div class="car-track" style="display:flex; transition:transform 0.35s ease;">
-            <img src="./assets/images/parker-1.jpg" style="min-width:100%; height:220px; object-fit:cover; border-radius:12px;">
-            <video src="./assets/videos/parker-demo.mov" controls style="min-width:100%; height:220px; border-radius:12px;"></video>
-            <img src="./assets/images/parker-2.jpg" style="min-width:100%; height:220px; object-fit:cover; border-radius:12px;">
+            <img src="./assets/images/Parker-1.jpg" style="min-width:100%; height:220px; object-fit:cover; border-radius:12px;">
+            <video src="./assets/videos/parker-demo.mp4" controls style="min-width:100%; height:220px; border-radius:12px;"></video>
+            <img src="./assets/images/Parker-2.jpg" style="min-width:100%; height:220px; object-fit:cover; border-radius:12px;">
           </div>
         
-          <!-- prev / next buttons -->
-          <button onclick="carMove(this,-1)" style="position:absolute;top:50%;left:8px;transform:translateY(-50%);background:hsla(0,0%,0%,.55);color:#fff;border:none;border-radius:8px;width:32px;height:32px;font-size:16px;cursor:pointer;">‹</button>
-          <button onclick="carMove(this,1)"  style="position:absolute;top:50%;right:8px;transform:translateY(-50%);background:hsla(0,0%,0%,.55);color:#fff;border:none;border-radius:8px;width:32px;height:32px;font-size:16px;cursor:pointer;">›</button>
+          <button onclick="carMove(this,-1)" style="position:absolute; top:0; bottom:0; left:8px; margin:auto; height:32px; width:32px; background:hsla(0,0%,0%,.55); color:#fff; border:none; border-radius:8px; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">‹</button>
+          <button onclick="carMove(this,1)"  style="position:absolute; top:0; bottom:0; right:8px; margin:auto; height:32px; width:32px; background:hsla(0,0%,0%,.55); color:#fff; border:none; border-radius:8px; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;">›</button>
         
         </div>
       </div>
