@@ -425,7 +425,7 @@
         </figure>
         <div class="info-content">
           <h1 class="name" title="Ahmed Neji">Ahmed Neji</h1>
-          <p class="title" data-i18n="job_title">Embedded Systems & Robotics Developer</p>
+          <p class="title" data-i18n="job_title">Robotics & Embedded Systems Engineer</p>
         </div>
         <button class="info_more-btn" data-sidebar-btn>
           <span data-i18n="show_contacts">Show Contacts</span>
@@ -502,11 +502,11 @@
           <h2 class="h2 article-title" data-i18n="nav_about">About</h2>
         </header>
         <section class="about-text">
-          <p data-i18n="about_p1">I have a strong and deliberate interest in applied mechatronics, embedded systems, and industrial automation within real production environments. My motivation is rooted in hands-on technical work — understanding machines at a system level, integrating mechanical and electronic components, and ensuring reliable operation in demanding industrial contexts. I am particularly driven by the practical side of engineering: troubleshooting, optimizing processes, and contributing directly to operational performance on the production floor.</p>
-          <p data-i18n="about_p2">My long-term objective is to build deep, practical expertise within technical production environments rather than pursuing a purely academic pathway. I am committed to developing as a mechatronics specialist through structured vocational training, mastering industrial control systems, automation technologies, and equipment integration from the ground up. I value stability, technical depth, and continuous professional growth within an industrial setting, and I see long-term development within the mechatronics field as my primary professional direction.</p>
+          <p data-i18n="about_p1">My passion lies in robotics and autonomous systems — engineering machines that interact with the world intelligently, at every scale. From full-sized autonomous vehicles to microscopic systems, I am fascinated by the full spectrum of what robots can be. My long-term ambition is to work in nanoscale robotics and its applications in human biology — systems capable of detecting and responding to anomalies at the cellular level.</p>
+          <p data-i18n="about_p2">I pursue this through hands-on building. Every project I take on — whether a competition autonomous vehicle, a WiFi-controlled robot, or an 18-servo hexapod — deepens my understanding of embedded systems, real-time control, and autonomous behavior. I work with limited resources by necessity, and have found that constraints are the best teacher. I am currently pursuing a Bachelor's degree in Robot Engineering, with the goal of building the academic and research foundation needed to push robotics into territory it hasn't reached yet.</p>
           <div class="intl-note">
-            <strong data-i18n="intl_label">International Readiness:</strong>
-            <span data-i18n="intl_text"> Open to international opportunities and long-term professional development in technical fields abroad.</span>
+            <strong data-i18n="intl_label">Academic Direction:</strong>
+            <span data-i18n="intl_text"> Seeking international university education in Robot Engineering, with a long-term research focus on nanoscale robotics and biological applications.</span>
           </div>
         </section>
         <section class="service">
@@ -514,10 +514,10 @@
           <ul class="focus-areas-list">
             <li class="focus-area-item"><span class="focus-area-tag" data-i18n="focus_1">Robotics & Autonomous Systems</span></li>
             <li class="focus-area-item"><span class="focus-area-tag" data-i18n="focus_2">Embedded Systems & Microcontrollers</span></li>
-            <li class="focus-area-item"><span class="focus-area-tag" data-i18n="focus_3">Mechatronics & Hardware Integration</span></li>
+            <li class="focus-area-item"><span class="focus-area-tag" data-i18n="focus_3">Nanoscale Robotics & Bio-Applications</span></li>
             <li class="focus-area-item"><span class="focus-area-tag" data-i18n="focus_4">Full-Stack Web Development</span></li>
             <li class="focus-area-item"><span class="focus-area-tag" data-i18n="focus_5">Mobile Apps — Flutter</span></li>
-            <li class="focus-area-item"><span class="focus-area-tag" data-i18n="focus_6">Industrial Production & Laser Systems</span></li>
+            <li class="focus-area-item"><span class="focus-area-tag" data-i18n="focus_6">Computer Vision & Autonomous Control</span></li>
           </ul>
         </section>
       </article>
@@ -538,15 +538,15 @@
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title">National Institute of Applied Science and Technology (INSAT)</h4>
               <span data-i18n="edu_insat_period">Tunis, Tunisia — Engineering Program</span>
-              <p class="timeline-text" data-i18n="edu_insat_text">Focus on Robotics, Embedded Systems, and System Integration. Long-term goal: advancing robotics and microsystem technologies.</p>
+              <p class="timeline-text" data-i18n="edu_insat_text">Focus on Robotics, Embedded Systems, and System Integration. Long-term goal: advancing nanoscale robotics and its applications in human biology.</p>
             </li>
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title" data-i18n="edu_bac_title">Tunisian Baccalaureate — Mathematics</h4>
-              <span data-i18n="edu_bac_grade">Grade: 18.11/20 · German equivalent: ~1.0–1.2</span>
+              <span data-i18n="edu_bac_grade">Grade: 18.11/20 (90.55%) · Distinction</span>
             </li>
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title">SAT — College Board</h4>
-              <span data-i18n="edu_sat_detail">Score: 1480 · Taken at Amideast Tunisia</span>
+              <span data-i18n="edu_sat_detail">Score: 1380 · 96th Percentile · Taken at Amideast Tunisia</span>
             </li>
           </ol>
         </section>
@@ -638,7 +638,7 @@
               <li>Arduino</li><li>Raspberry Pi</li><li>ROS (basics)</li>
               <li>SolidWorks</li><li>Linux</li><li>Git</li>
               <li>SQL</li><li>Firebase</li><li>REST APIs</li>
-              <li>Laser Cutting</li><li>PCB Basics</li><li>Embedded C</li>
+              <li>OpenCV</li><li>PCB Basics</li><li>Embedded C</li>
               <li>Unity / C#</li><li>ESP8266</li>
             </ul>
           </div>
@@ -845,10 +845,9 @@
       }
     });
 
-    /* ── NAV (data-page-target replaces innerHTML matching from script.js) ── */
+    /* ── NAV ── */
     document.addEventListener('DOMContentLoaded', () => {
 
-      /* clone nav buttons to strip script.js listeners */
       document.querySelectorAll('[data-nav-link]').forEach(btn => {
         const c = btn.cloneNode(true);
         btn.parentNode.replaceChild(c, btn);
@@ -867,7 +866,7 @@
         });
       });
 
-      /* ── FILTER (language-safe: reads data-filter-value) ── */
+      /* ── FILTER ── */
       document.querySelectorAll('[data-filter-btn]').forEach(btn => {
         btn.addEventListener('click', function() {
           const article = this.closest('article');
@@ -911,24 +910,24 @@
       en: {
         nav_about:"About", nav_resume:"Resume", nav_projects:"Projects",
         nav_volunteer:"Volunteer", nav_contact:"Contact",
-        job_title:"Background in Engineering",
+        job_title:"Robotics & Embedded Systems Engineer",
         show_contacts:"Show Contacts",
         contact_email:"Email", contact_phone:"Phone",
         contact_birthday:"Birthday", contact_location:"Location",
-        about_p1:"I have a strong and deliberate interest in applied mechatronics, embedded systems, and industrial automation within real production environments. My motivation is rooted in hands-on technical work — understanding machines at a system level, integrating mechanical and electronic components, and ensuring reliable operation in demanding industrial contexts. I am particularly driven by the practical side of engineering: troubleshooting, optimizing processes, and contributing directly to operational performance on the production floor.",
-        about_p2:"My long-term objective is to build deep, practical expertise within technical production environments rather than pursuing a purely academic pathway. I am committed to developing as a mechatronics specialist through structured vocational training, mastering industrial control systems, automation technologies, and equipment integration from the ground up. I value stability, technical depth, and continuous professional growth within an industrial setting, and I see long-term development within the mechatronics field as my primary professional direction.",
-        intl_label:"International Readiness:",
-        intl_text:" Open to international opportunities and long-term professional development in technical fields abroad.",
+        about_p1:"My passion lies in robotics and autonomous systems — engineering machines that interact with the world intelligently, at every scale. From full-sized autonomous vehicles to microscopic systems, I am fascinated by the full spectrum of what robots can be. My long-term ambition is to work in nanoscale robotics and its applications in human biology — systems capable of detecting and responding to anomalies at the cellular level.",
+        about_p2:"I pursue this through hands-on building. Every project I take on — whether a competition autonomous vehicle, a WiFi-controlled robot, or an 18-servo hexapod — deepens my understanding of embedded systems, real-time control, and autonomous behavior. I work with limited resources by necessity, and have found that constraints are the best teacher. I am currently pursuing a Bachelor's degree in Robot Engineering, with the goal of building the academic and research foundation needed to push robotics into territory it hasn't reached yet.",
+        intl_label:"Academic Direction:",
+        intl_text:" Seeking international university education in Robot Engineering, with a long-term research focus on nanoscale robotics and biological applications.",
         focus_title:"Areas of Expertise",
         focus_1:"Robotics & Autonomous Systems", focus_2:"Embedded Systems & Microcontrollers",
-        focus_3:"Mechatronics & Hardware Integration", focus_4:"Full-Stack Web Development",
-        focus_5:"Mobile Apps — Flutter", focus_6:"Industrial Production & Laser Systems",
+        focus_3:"Nanoscale Robotics & Bio-Applications", focus_4:"Full-Stack Web Development",
+        focus_5:"Mobile Apps — Flutter", focus_6:"Computer Vision & Autonomous Control",
         resume_education:"Education",
         edu_insat_period:"Tunis, Tunisia — Engineering Program",
-        edu_insat_text:"Focus on Robotics, Embedded Systems, and System Integration. Long-term goal: advancing robotics and microsystem technologies.",
+        edu_insat_text:"Focus on Robotics, Embedded Systems, and System Integration. Long-term goal: advancing nanoscale robotics and its applications in human biology.",
         edu_bac_title:"Tunisian Baccalaureate — Mathematics",
-        edu_bac_grade:"Grade: 18.11/20 · German equivalent: ~1.0–1.2",
-        edu_sat_detail:"Score: 1480 · Taken at Amideast Tunisia",
+        edu_bac_grade:"Grade: 18.11/20 (90.55%) · Distinction",
+        edu_sat_detail:"Score: 1380 · 96th Percentile · Taken at Amideast Tunisia",
         resume_experience:"Experience",
         job_csr_title:"Customer Service Representative",
         job_csr_text:"Structured customer support in a KPI-driven corporate environment. Resolved service and technical inquiries via phone, email, and chat. Maintained high communication quality in English. Developed strong problem-solving and operational discipline.",
@@ -949,13 +948,10 @@
         lang_en:"Fluent", lang_de:"B1 certified · B2 in progress",
         lang_fr:"B2 — Fluent", lang_ar:"Native",
         resume_skills:"Technical Skills",
-        /* filter */
         f_all:"All", f_embedded:"Embedded", f_robotics:"Robotics",
         f_mobile:"Mobile", f_game:"Game Dev", f_select:"Select category",
-        /* badges */
         badge_active:"🟢 Active", badge_completed:"🔵 Completed",
         badge_prototype:"🟡 Prototype", badge_dev:"🟣 In Development",
-        /* project cards */
         p1_title:"Omega — WiFi RC Vehicle",
         p1_desc:"WiFi-controlled robotic vehicle with custom embedded motor control and Flutter remote interface.",
         p2_title:"NXP Cup — Autonomous Car",
@@ -966,9 +962,7 @@
         p4_desc:"AI-powered productivity app with behavioral tracking and cloud-based persistence.",
         p5_title:"Pallbearer — Unity Platformer",
         p5_desc:"2D platformer with physics-based mechanics and state-machine-driven character control.",
-        /* modal labels */
         lbl_overview:"Overview", lbl_details:"Technical Details",
-        /* modal 1 */
         m1_title:"Omega — WiFi-Controlled RC Vehicle",
         m1_p:"WiFi-controlled robotic vehicle built around the ESP8266 microcontroller with custom embedded motor control logic and a Flutter remote interface for real-time command delivery.",
         m1_d1:"Network architecture: ESP8266 hosts a local WiFi access point; Flutter app connects directly and sends UDP command packets",
@@ -977,7 +971,6 @@
         m1_d4:"Control protocol: Directional commands (forward, back, left, right, stop) encoded as single-byte packets for minimal transmission delay",
         m1_d5:"Flutter UI: Custom joystick widget with touch event handling and real-time WiFi connection status indicator",
         m1_note:"Flagship project combining embedded networking, real-time motor control, and cross-platform mobile development into a single integrated system.",
-        /* modal 2 */
         m2_title:"NXP Cup — Autonomous RC Car",
         m2_p:"Competition-based autonomous vehicle built for the NXP Cup using onboard vision processing via Pixy2 camera for lane detection and an embedded control algorithm to maintain track position at speed.",
         m2_d1:"Lane detection: Pixy2 camera identifies colored track markers; centroid data is fed to steering logic in real time at each control cycle",
@@ -986,7 +979,6 @@
         m2_d4:"Real-time constraints: Control loop optimized for fixed-interval execution under the strict timing requirements of the NXP FRDM platform",
         m2_d5:"Competition result: Completed all qualifying runs; vehicle successfully navigated the standard track layout",
         m2_note:"High-value competition project for engineering roles — demonstrates autonomous control, vision integration, PID tuning, and real-time embedded architecture under real constraints.",
-        /* modal 3 */
         m3_title:"Parker — 18-Servo Hexapod Robot",
         m3_p:"Designed and implemented an 18-servo hexapod robot focusing on tripod gait sequencing and synchronized motion control. Built to explore multi-actuator coordination under real embedded hardware resource constraints.",
         m3_d1:"Gait algorithm: Tripod gait implemented — alternating groups of three legs lifted and planted in synchronized timing sequences",
@@ -995,7 +987,6 @@
         m3_d4:"Microcontroller limits: Processing overhead of managing 18 simultaneous PWM channels approached the controller's scheduling capacity",
         m3_d5:"Lessons learned: Future iteration would use dedicated servo controller ICs (PCA9685) and distributed power rails for cleaner torque delivery",
         m3_note:"Movement smoothness was limited due to microcontroller timing constraints and power distribution challenges. This engineering realism demonstrates applied problem diagnosis and iterative design thinking — not a flaw, a finding.",
-        /* modal 4 */
         m4_title:"AI Accountability App",
         m4_p:"AI-powered productivity application with behavioral tracking and cloud-based persistence. Designed to help users build consistent habits through intelligent feedback loops and real-time data sync.",
         m4_d1:"Authentication: Firebase Auth with email/password sign-in and persistent session management across app restarts",
@@ -1004,7 +995,6 @@
         m4_d4:"State management: Provider-based reactive architecture for UI updates across habit dashboard and tracking screens",
         m4_d5:"Offline-first: Local caching ensures full functionality without connectivity; data syncs automatically on reconnect",
         m4_note:"Demonstrates full-stack mobile architecture: frontend design, cloud database integration, and AI API consumption within a production-structured Flutter application.",
-        /* modal 5 */
         m5_title:"Pallbearer — 2D Unity Platformer",
         m5_p:"Collaborative 2D platformer focused on state-machine-driven character control, physics-based mechanics, and modular level architecture. Role: programming lead — responsible for all gameplay systems and code architecture.",
         m5_d1:"State machine: Finite state machine managing player states (idle, run, jump, fall, attack) with clean, decoupled transition logic",
@@ -1013,12 +1003,10 @@
         m5_d4:"Scene architecture: Modular scene loading with persistent game manager using singleton pattern for cross-scene state",
         m5_d5:"Version control: Git-based workflow with feature branches enabling parallel art and programming development",
         m5_note:"State machines, physics simulation, and modular software architecture — skills developed here apply directly to robotic control systems and embedded software design.",
-        /* media placeholders */
         media_hw:"📷 Hardware photo — add yours", media_app:"📱 Flutter UI screenshot",
         media_vid:"🎥 Video — add yours", media_screen:"📱 App screenshot",
         media_arch:"🗂 Architecture diagram", media_clip:"🎮 Gameplay clip",
         media_code:"💻 Code structure screenshot",
-        /* volunteer */
         vol_1_title:"General Secretary — IEEE WIE, INSAT",
         vol_1_org:"IEEE Women in Engineering · 2023 – 2024",
         vol_1_text:"Coordinated technical, academic, and social initiatives within the student engineering community. Organized awareness campaigns and outreach events including Pink October activities and STEM school programs for younger students. Managed internal team coordination, event planning workflows, and external communications with partners and participants. Supported administrative documentation, scheduling, and logistics management for club activities.",
@@ -1028,7 +1016,6 @@
         vol_3_title:"Family Care & Personal Responsibility",
         vol_3_org:"Home Care — Personal",
         vol_3_text:"Provided long-term caregiving assistance for an elderly family member diagnosed with Alzheimer's disease. Supported daily life organization, emotional assistance, and routine management in a home-care environment. Developed patience, responsibility, reliability, and crisis-management awareness through sustained real-life caregiving experience.",
-        /* contact */
         contact_form_title:"Contact Form",
         ph_name:"Full name", ph_email:"Email address", ph_msg:"Your Message",
         contact_send:"Send Message",
@@ -1037,24 +1024,24 @@
       de: {
         nav_about:"Über mich", nav_resume:"Lebenslauf", nav_projects:"Projekte",
         nav_volunteer:"Ehrenamt", nav_contact:"Kontakt",
-        job_title:"Embedded Systems & Robotik – Entwicklung",
+        job_title:"Robotik & Embedded-Systems-Ingenieur",
         show_contacts:"Kontakte anzeigen",
         contact_email:"E-Mail", contact_phone:"Telefon",
         contact_birthday:"Geburtstag", contact_location:"Standort",
-        about_p1:"Ich habe ein starkes und bewusst gewähltes Interesse an angewandter Mechatronik, eingebetteten Systemen und industrieller Automatisierung in realen Produktionsumgebungen. Meine Motivation liegt in der praktischen technischen Arbeit – Maschinen auf Systemebene zu verstehen, mechanische und elektronische Komponenten zu integrieren und einen zuverlässigen Betrieb in anspruchsvollen industriellen Kontexten sicherzustellen. Besonders reizt mich die praktische Seite der Technik: Fehleranalyse, Prozessoptimierung und der direkte Beitrag zur Leistungsfähigkeit auf dem Produktionsboden.",
-        about_p2:"Mein langfristiges Ziel ist es, fundierte praktische Expertise in technischen Produktionsumgebungen aufzubauen, anstatt einen rein akademischen Weg zu verfolgen. Ich bin entschlossen, mich durch eine strukturierte Berufsausbildung im Bereich Mechatronik zu einem Spezialisten zu entwickeln und industrielle Steuerungssysteme, Automatisierungstechnologien sowie Anlagenintegration von Grund auf zu beherrschen. Ich schätze Stabilität, technische Tiefe und kontinuierliche berufliche Weiterentwicklung im industriellen Umfeld und sehe meine langfristige Zukunft klar im Bereich der Mechatronik.",
-        intl_label:"Internationale Einsatzbereitschaft:",
-        intl_text:" Offen für internationale Möglichkeiten und langfristige berufliche Entwicklung in technischen Bereichen im Ausland.",
+        about_p1:"Meine Leidenschaft gilt der Robotik und autonomen Systemen — der Entwicklung von Maschinen, die intelligent mit der Welt interagieren, auf jeder Größenskala. Von großen autonomen Fahrzeugen bis hin zu mikroskopischen Systemen fasziniert mich das gesamte Spektrum dessen, was Roboter sein können. Mein langfristiger Ehrgeiz ist es, im Bereich der Nanorobotik und ihrer Anwendungen in der menschlichen Biologie zu arbeiten — Systeme, die Anomalien auf zellulärer Ebene erkennen und darauf reagieren können.",
+        about_p2:"Ich verfolge dieses Ziel durch praktisches Bauen. Jedes Projekt, das ich angehe — sei es ein autonomes Wettbewerbsfahrzeug, ein WLAN-gesteuerter Roboter oder ein 18-Servo-Hexapod — vertieft mein Verständnis von eingebetteten Systemen, Echtzeitsteuerung und autonomem Verhalten. Ich arbeite aus Notwendigkeit mit begrenzten Ressourcen und habe festgestellt, dass Einschränkungen der beste Lehrer sind. Ich strebe derzeit einen Bachelor-Abschluss in Robotertechnik an, mit dem Ziel, die akademische und wissenschaftliche Grundlage aufzubauen, um die Robotik in noch unerreichtes Terrain zu führen.",
+        intl_label:"Akademische Ausrichtung:",
+        intl_text:" Angestrebte internationale Hochschulbildung in Robotertechnik, mit langfristigem Forschungsschwerpunkt auf Nanorobotik und biologischen Anwendungen.",
         focus_title:"Fachgebiete",
         focus_1:"Robotik & Autonome Systeme", focus_2:"Embedded Systems & Mikrocontroller",
-        focus_3:"Mechatronik & Hardwareintegration", focus_4:"Full-Stack-Webentwicklung",
-        focus_5:"Mobile Apps — Flutter", focus_6:"Industrielle Produktion & Lasersysteme",
+        focus_3:"Nanorobotik & Bio-Anwendungen", focus_4:"Full-Stack-Webentwicklung",
+        focus_5:"Mobile Apps — Flutter", focus_6:"Computer Vision & Autonome Steuerung",
         resume_education:"Ausbildung",
         edu_insat_period:"Tunis, Tunesien — Ingenieurstudium",
-        edu_insat_text:"Schwerpunkt Robotik, Embedded Systems und Systemintegration. Langfristiges Ziel: Weiterentwicklung von Robotik- und Mikrosystemtechnologien.",
+        edu_insat_text:"Schwerpunkt Robotik, Embedded Systems und Systemintegration. Langfristiges Ziel: Weiterentwicklung der Nanorobotik und ihrer Anwendungen in der menschlichen Biologie.",
         edu_bac_title:"Tunesisches Abitur — Mathematik",
-        edu_bac_grade:"Note: 18,11/20 · Deutsches Äquivalent: ca. 1,0–1,2",
-        edu_sat_detail:"Ergebnis: 1480 · Abgelegt bei Amideast Tunesien",
+        edu_bac_grade:"Note: 18,11/20 (90,55%) · Auszeichnung",
+        edu_sat_detail:"Ergebnis: 1380 · 96. Perzentile · Abgelegt bei Amideast Tunesien",
         resume_experience:"Berufserfahrung",
         job_csr_title:"Kundenbetreuer",
         job_csr_text:"Strukturierter Kundensupport in einem KPI-orientierten Unternehmensumfeld. Bearbeitung von Service- und technischen Anfragen per Telefon, E-Mail und Chat. Hohe Kommunikationsqualität auf Englisch. Ausgeprägte Problemlösungskompetenz und Betriebsdisziplin.",
@@ -1105,7 +1092,7 @@
         m2_d3:"PID-Regelkreis: PID-Korrektur am Lenkausgang zur Reduzierung von Schwingungen und Überschwingen",
         m2_d4:"Echtzeitanforderungen: Steuerungsschleife für feste Ausführungsintervalle auf der NXP FRDM-Plattform optimiert",
         m2_d5:"Wettbewerbsergebnis: Alle Qualifikationsläufe absolviert; Fahrzeug navigierte erfolgreich den Standardparcours",
-        m2_note:"Hochwertiges Wettbewerbsprojekt für Ingenieursstellen — demonstriert autonome Steuerung, Visionintegration, PID-Abstimmung und Echtzeit-Embedded-Architektur unter realen Bedingungen.",
+        m2_note:"Hochwertiges Wettbewerbsprojekt — demonstriert autonome Steuerung, Visionintegration, PID-Abstimmung und Echtzeit-Embedded-Architektur unter realen Bedingungen.",
         m3_title:"Parker — 18-Servo-Hexapod-Roboter",
         m3_p:"Entwurf und Implementierung eines 18-Servo-Hexapod-Roboters mit Schwerpunkt auf Dreibein-Gangsequenzierung und synchronisierter Bewegungssteuerung unter realen Embedded-Hardware-Einschränkungen.",
         m3_d1:"Gangalgorithmus: Dreibein-Gang implementiert — abwechselnde Dreiergruppen von Beinen in synchronisierten Zeitsequenzen",
@@ -1134,15 +1121,15 @@
         media_vid:"🎥 Video — eigenes hinzufügen", media_screen:"📱 App-Screenshot",
         media_arch:"🗂 Architekturdiagramm", media_clip:"🎮 Gameplay-Clip",
         media_code:"💻 Code-Struktur-Screenshot",
-        vol_1_title:"Generalsekretärin — IEEE WIE, INSAT",
+        vol_1_title:"Generalsekretär — IEEE WIE, INSAT",
         vol_1_org:"IEEE Women in Engineering · 2023 – 2024",
-        vol_1_text:"Koordination technischer, akademischer und sozialer Initiativen innerhalb der studentischen Ingenieurgemeinschaft. Organisation von Aufklärungskampagnen und Outreach-Veranstaltungen einschließlich Pink-October-Aktivitäten und MINT-Schulprogrammen für jüngere Schüler. Verwaltung der internen Teamkoordination, Eventplanung und externen Kommunikation mit Partnern und Teilnehmern. Unterstützung bei administrativer Dokumentation, Terminplanung und Logistikmanagement für Club-Aktivitäten.",
+        vol_1_text:"Koordination technischer, akademischer und sozialer Initiativen innerhalb der studentischen Ingenieurgemeinschaft. Organisation von Aufklärungskampagnen und Outreach-Veranstaltungen einschließlich Pink-October-Aktivitäten und MINT-Schulprogrammen für jüngere Schüler. Verwaltung der internen Teamkoordination, Eventplanung und externen Kommunikation mit Partnern und Teilnehmern.",
         vol_2_title:"Humanitäre & gemeinschaftliche Unterstützung",
         vol_2_org:"Soziale Freiwilligeninitiativen — Tunesien · Laufend",
-        vol_2_text:"Teilnahme an jährlichen Wohltätigkeitskampagnen zur Unterstützung wirtschaftlich benachteiligter Familien. Koordination von Sammlung und Verteilung von Schulmaterialien, Büchern, Lebensmitteln und Kleidung. Unterstützung von Ramadan-Solidaritätsaktionen durch Lebensmittel- und Bedarfsartikelverteilung. Beiträge zu informellen Spendenaktionen in sozialen und beruflichen Netzwerken.",
+        vol_2_text:"Teilnahme an jährlichen Wohltätigkeitskampagnen zur Unterstützung wirtschaftlich benachteiligter Familien. Koordination von Sammlung und Verteilung von Schulmaterialien, Büchern, Lebensmitteln und Kleidung. Unterstützung von Ramadan-Solidaritätsaktionen durch Lebensmittel- und Bedarfsartikelverteilung.",
         vol_3_title:"Familienpflege & persönliche Verantwortung",
         vol_3_org:"Häusliche Pflege — Persönlich",
-        vol_3_text:"Langfristige Pflegeunterstützung für ein älteres Familienmitglied mit Alzheimer-Diagnose. Unterstützung bei der täglichen Lebensorganisation, emotionaler Begleitung und Routinemanagement in häuslicher Pflegeumgebung. Entwicklung von Geduld, Verantwortungsbewusstsein, Zuverlässigkeit und Krisenmanagementbewusstsein durch nachhaltige Pflegeerfahrung.",
+        vol_3_text:"Langfristige Pflegeunterstützung für ein älteres Familienmitglied mit Alzheimer-Diagnose. Unterstützung bei der täglichen Lebensorganisation, emotionaler Begleitung und Routinemanagement in häuslicher Pflegeumgebung. Entwicklung von Geduld, Verantwortungsbewusstsein, Zuverlässigkeit und Krisenmanagementbewusstsein.",
         contact_form_title:"Kontaktformular",
         ph_name:"Vollständiger Name", ph_email:"E-Mail-Adresse", ph_msg:"Ihre Nachricht",
         contact_send:"Nachricht senden",
@@ -1151,24 +1138,18 @@
 
 function setLang(lang) {
   document.documentElement.lang = lang;
-
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
   document.getElementById('btn-de').classList.toggle('active', lang === 'de');
-
   const t = T[lang];
-
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if (t[key] !== undefined) {
-      el.textContent = t[key];
-    }
+    if (t[key] !== undefined) el.textContent = t[key];
   });
-
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
     const key = el.getAttribute('data-i18n-placeholder');
-    if (t[key] !== undefined) {
-      el.placeholder = t[key];
-    }
+    if (t[key] !== undefined) el.placeholder = t[key];
   });
 }
   </script>
+</body>
+</html>
